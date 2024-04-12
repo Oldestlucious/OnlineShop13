@@ -1,17 +1,212 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-       <link rel="stylesheet" href="styles.css"> <!-- Lien vers votre fichier CSS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services de Création Numérique</title>
- 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .service {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .service h2 {
+            color: #333;
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .service p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+        }
+        .price {
+            color: #4CAF50; /* Couleur verte pour le prix */
+            font-weight: bold;
+        }
+        .map {
+            color: #2196F3; /* Couleur bleue pour la carte map snapchat */
+        }
+        .button {
+            display: inline-block;
+            background-color: #2ecc71; /* Vert fluo */
+            color: #000; /* Texte noir */
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid #e74c3c; /* Bordure rouge */
+            border-radius: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #27ae60; /* Vert plus foncé au survol */
+            color: #fff; /* Texte blanc au survol */
+        }
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style pour le nom du créateur */
+        .creator-name {
+            position: fixed;
+            top: 20px; /* Ajustez la valeur selon votre préférence */
+            left: 20px; /* Ajustez la valeur selon votre préférence */
+            z-index: 9999;
+            background-color: #2ecc71; /* Couleur verte fluo */
+            color: #fff;
+            padding: 10px 20px;
+            border-bottom-right-radius: 50px; /* Pour créer la forme de pyramide */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer; /* Rendre le nom du créateur cliquable */
+        }
+
+        /* Style pour masquer le nom du créateur */
+        .hide {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+        /* Style pour la description colorée */
+        .description {
+            color: #ff5722; /* Couleur orange */
+            font-weight: bold;
+        }
+
+        
+
+
+    
+
+.service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.small-box-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.small-box {
+    width: 30%; /* Ajustement de la largeur */
+    max-width: 90px;
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.small-box h3 {
+    margin: 0;
+    font-size: 18px;
+    color: blue; /* Changement de couleur à bleu */
+    text-align: center;
+}
+
+.small-box p {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.small-box a {
+    text-decoration: none;
+}
+
+.small-box.yellow {
+    border-color: yellow;
+}
+
+.small-box.green {
+    border-color: green;
+}
+
+.small-box.red {
+    border-color: red;
+}
+
+</style>
+
+
 </head>
 <body>
     <!-- Ajout du conteneur pour le nom du créateur -->
     <a href="https://www.snapchat.com/add/lucious-lion04?share_id=E2B3bwMxt0U&locale=fr-FR" target="_blank">
         <div class="creator-name">OLDEST</div>
     </a>
+
     <header>
         <h1>Service de création numérique avec ma signature</h1>
     </header>
@@ -19,8 +214,10 @@
         <div class="service">
             <h2>Création de Filtres Snapchat Personnalisés</h2>
             <p>Obtenez des filtres Snapchat uniques et personnalisés pour vos événements, mariages, fêtes d'anniversaire, ou pour promouvoir votre entreprise. Prix : <span class="price">45 €</span>. Exemple : <span class="description"><a href="https://lens.snapchat.com/51f227930cb9470f999d4b89cf475625?share_id=TyI6hFace_8&locale=fr-FR">Cliquez sur ce lien pour voir un exemple de filtre</a></span></p>
-<blockquote class="snapchat-embed" data-snapchat-embed-width="306" data-snapchat-embed-height="481" data-snapchat-embed-url="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625/embed" data-snapchat-embed-style="border-radius: 40px;" data-snapchat-embed-title="Lens FOOD TRUCK OL" style="background:#C4C4C4; border:0; border-radius:40px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:416px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px); display: flex; flex-direction: column; position: relative; height:650px;"> <div style="display: flex; flex-direction: row; align-items: center;">  <a title="Lens FOOD TRUCK OL" href="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625" style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; width: 40px; margin:16px; cursor: pointer"></a>  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"></div> </div> <div style="flex: 1;"></div> <div style="display: flex; flex-direction: row; align-items: center; border-end-end-radius: 40px; border-end-start-radius: 40px;">  <a title="Lens FOOD TRUCK OL" href="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625" style="background-color: yellow; width:100%; padding: 10px 20px; border: none; border-radius: inherit; cursor: pointer; text-align: center; display: flex;flex-direction: row;justify-content: center; text-decoration: none; color: black;">  View more on Snapchat  </a> </div></blockquote><script async src="https://www.snapchat.com/embed.js"></script>         
+
+<blockquote class="snapchat-embed" data-snapchat-embed-width="306" data-snapchat-embed-height="481" data-snapchat-embed-url="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625/embed" data-snapchat-embed-style="border-radius: 40px;" data-snapchat-embed-title="Lens FOOD TRUCK OL" style="background:#C4C4C4; border:0; border-radius:40px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:416px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px); display: flex; flex-direction: column; position: relative; height:650px;"> <div style="display: flex; flex-direction: row; align-items: center;">  <a title="Lens FOOD TRUCK OL" href="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625" style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; width: 40px; margin:16px; cursor: pointer"></a>  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"></div> </div> <div style="flex: 1;"></div> <div style="display: flex; flex-direction: row; align-items: center; border-end-end-radius: 40px; border-end-start-radius: 40px;">  <a title="Lens FOOD TRUCK OL" href="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625" style="background-color: yellow; width:100%; padding: 10px 20px; border: none; border-radius: inherit; cursor: pointer; text-align: center; display: flex;flex-direction: row;justify-content: center; text-decoration: none; color: black;">  View more on Snapchat  </a> </div></blockquote><script async src="https://www.snapchat.com/embed.js"></script>          
         </div>
+
 <div class="service">
     <h2>Création de Localisations pour Votre Entreprise</h2>
     <p>Nous créons des localisations personnalisées pour votre entreprise, afin que vos clients puissent facilement vous trouver sur la carte <span class="map">map snapchat</span>. Prix : <span class="price">70 €</span>.</p>
@@ -29,6 +226,9 @@
     </div>
     <p class="description">Cliquez sur ce lien pour voir un exemple : <a href="https://t.snapchat.com/MBfTkatp" target="_blank" class="map">Voir l'exemple</a></p>
 </div>
+
+        
+
 <div class="service">
     <h2>Création de Sites Web</h2>
     <p>Je propose mes services de conception de sites web professionnels et conviviaux pour votre entreprise ou votre projet personnel. De plus, je crée chaque site en code HTML, assurant ainsi sa longévité et son autonomie vis-à-vis des plateformes comme Wix ou d'autres sites payants prix :</p>
@@ -55,7 +255,7 @@
         </div>
     </div>
 </div>
-      
+        
         <div class="service">
             <h2>Contact</h2>
             <p>Pour plus d'informations ou pour passer commande, veuillez nous contacter à l'adresse email suivante : <a href="mailto:oldestlucious@gmail.com">oldestlucious@gmail.com</a> ou par téléphone au : <span class="map">07 44 89 27 83</span></p>
@@ -66,5 +266,19 @@
         </div>
     </div>
 
+    <script>
+        var lastScrollTop = 0;
+        window.addEventListener("scroll", function() {
+            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScroll > lastScrollTop) {
+                // Descendre la page
+                document.querySelector('.creator-name').classList.remove('hide');
+            } else {
+                // Monter la page
+                document.querySelector('.creator-name').classList.add('hide');
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        }, false);
+    </script>
 </body>
 </html>
