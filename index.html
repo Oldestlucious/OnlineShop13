@@ -1,284 +1,477 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services de Création Numérique</title>
+    <title>En Ligne Shop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Protest Guerrilla', system-ui, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+        }
+
         header {
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            color: #fff;
-            text-align: center;
+            background-color: #333;
             padding: 20px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
+
         h1 {
-            margin: 0;
-            font-size: 36px;
-            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+            font-size: 2.5em;
+            color: #ff9800;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
+
+        nav {
+            display: flex;
         }
-        .service {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .service:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        .service h2 {
-            color: #333;
-            font-size: 24px;
-            margin-top: 0;
-        }
-        .service p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #666;
-        }
-        .price {
-            color: #4CAF50; /* Couleur verte pour le prix */
-            font-weight: bold;
-        }
-        .map {
-            color: #2196F3; /* Couleur bleue pour la carte map snapchat */
-        }
-        .button {
-            display: inline-block;
-            background-color: #2ecc71; /* Vert fluo */
-            color: #000; /* Texte noir */
-            padding: 10px 30px;
-            text-align: center;
-            text-decoration: none;
-            border: 2px solid #e74c3c; /* Bordure rouge */
-            border-radius: 0;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #27ae60; /* Vert plus foncé au survol */
-            color: #fff; /* Texte blanc au survol */
-        }
-        form {
-            margin-top: 20px;
-            text-align: center;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 300px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-right: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
+
+        nav button {
+            background-color: #4caf50;
             border: none;
-            border-radius: 5px;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: 0.3s;
         }
-        button:hover {
+
+        nav button:hover {
             background-color: #45a049;
         }
-        a {
-            color: #2196F3;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+
+        main {
+            padding: 20px;
         }
 
-        /* Style pour le nom du créateur */
-        .creator-name {
+        .product-section {
+            display: none;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: #333;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .product img:hover {
+            transform: scale(1.2);
+        }
+
+        button.addToCart {
+            background-color: #ff6f61;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button.addToCart:hover {
+            background-color: #ff4c3b;
+        }
+
+        .modal {
+            display: none;
             position: fixed;
-            top: 20px; /* Ajustez la valeur selon votre préférence */
-            left: 20px; /* Ajustez la valeur selon votre préférence */
-            z-index: 9999;
-            background-color: #2ecc71; /* Couleur verte fluo */
-            color: #fff;
-            padding: 10px 20px;
-            border-bottom-right-radius: 50px; /* Pour créer la forme de pyramide */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            cursor: pointer; /* Rendre le nom du créateur cliquable */
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        /* Style pour masquer le nom du créateur */
-        .hide {
-            opacity: 0;
-            transform: translateY(-50px);
+        .modal-content {
+            background-color: #fff;
+            color: #000;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
         }
 
-        /* Style pour la description colorée */
-        .description {
-            color: #ff5722; /* Couleur orange */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        #cartButton {
+            background-color: #ff9800;
+            padding: 10px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #cartButton:hover {
+            background-color: #ff7800;
+        }
+
+        #cartTotal {
             font-weight: bold;
+            color: #333;
         }
 
-        
+        @media (max-width: 768px) {
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
 
+            .product {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
 
-    
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+            }
 
-.service {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+            h1 {
+                margin-bottom: 20px;
+            }
 
-.small-box-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
+            nav button {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+        }
 
-.small-box {
-    width: 30%; /* Ajustement de la largeur */
-    max-width: 90px;
-    background-color: #fff;
-    padding: 20px;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.small-box h3 {
-    margin: 0;
-    font-size: 18px;
-    color: blue; /* Changement de couleur à bleu */
-    text-align: center;
-}
-
-.small-box p {
-    margin: 10px 0 0;
-    font-size: 14px;
-    color: #666;
-    text-align: center;
-}
-
-.small-box a {
-    text-decoration: none;
-}
-
-.small-box.yellow {
-    border-color: yellow;
-}
-
-.small-box.green {
-    border-color: green;
-}
-
-.small-box.red {
-    border-color: red;
-}
-
-</style>
-
-
+        .description {
+            background-color: #444;
+            padding: 5px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Ajout du conteneur pour le nom du créateur -->
-    <a href="https://www.snapchat.com/add/lucious-lion04?share_id=E2B3bwMxt0U&locale=fr-FR" target="_blank">
-        <div class="creator-name">OLDEST</div>
-    </a>
-
     <header>
-        <h1>Service de création numérique avec ma signature</h1>
+        <h1>En Ligne Shop</h1>
+
+        <section class="description">
+            <h2>
+                À propos de nous 
+                <span id="toggleDescription" style="cursor: pointer;">▼</span>
+            </h2>
+            <p id="descriptionText" style="display: none;">
+                Bienvenue sur notre site ! Vous pouvez planifier votre commande pour une livraison entre 21h et 5h30 du matin. Passez votre commande à partir de 20h et choisissez le créneau qui vous convient le mieux.
+            </p>
+        </section>
+
+        <script>
+            const toggleButton = document.getElementById('toggleDescription');
+            const descriptionText = document.getElementById('descriptionText');
+
+            toggleButton.addEventListener('click', () => {
+                if (descriptionText.style.display === 'none') {
+                    descriptionText.style.display = 'block';
+                    toggleButton.textContent = '▲';
+                } else {
+                    descriptionText.style.display = 'none';
+                    toggleButton.textContent = '▼';
+                }
+            });
+        </script>
+
+        <nav>
+            <button class="categoryButton" data-category="boissons">Boissons</button>
+            <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
+            <button class="categoryButton" data-category="creme-de-luxe">Crème de Luxe</button>
+            <button class="categoryButton" data-category="cigarettes-electroniques">Cigarettes Électroniques</button>
+        </nav>
+        <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
     </header>
-    <div class="container">
-        <div class="service">
-            <h2>Création de Filtres Snapchat Personnalisés</h2>
-            <p>Obtenez des filtres Snapchat uniques et personnalisés pour vos événements, mariages, fêtes d'anniversaire, ou pour promouvoir votre entreprise. Prix : <span class="price">45 €</span>. Exemple : <span class="description"><a href="https://lens.snapchat.com/51f227930cb9470f999d4b89cf475625?share_id=TyI6hFace_8&locale=fr-FR">Cliquez sur ce lien pour voir un exemple de filtre</a></span></p>
 
-<blockquote class="snapchat-embed" data-snapchat-embed-width="306" data-snapchat-embed-height="481" data-snapchat-embed-url="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625/embed" data-snapchat-embed-style="border-radius: 40px;" data-snapchat-embed-title="Lens FOOD TRUCK OL" style="background:#C4C4C4; border:0; border-radius:40px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:416px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px); display: flex; flex-direction: column; position: relative; height:650px;"> <div style="display: flex; flex-direction: row; align-items: center;">  <a title="Lens FOOD TRUCK OL" href="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625" style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; width: 40px; margin:16px; cursor: pointer"></a>  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"></div> </div> <div style="flex: 1;"></div> <div style="display: flex; flex-direction: row; align-items: center; border-end-end-radius: 40px; border-end-start-radius: 40px;">  <a title="Lens FOOD TRUCK OL" href="https://www.snapchat.com/lens/51f227930cb9470f999d4b89cf475625" style="background-color: yellow; width:100%; padding: 10px 20px; border: none; border-radius: inherit; cursor: pointer; text-align: center; display: flex;flex-direction: row;justify-content: center; text-decoration: none; color: black;">  View more on Snapchat  </a> </div></blockquote><script async src="https://www.snapchat.com/embed.js"></script>          
+<main>
+    <div class="products">
+        <div class="product">
+            <img src="https://example.com/montre-connectee.jpg" alt="Montre Connectée" class="zoom">
+            <h3>Montre Connectée</h3>
+            <p>Prix: 45€</p>
+            <button class="addToCart" data-name="Montre Connectée" data-price="45">Ajouter au panier</button>
         </div>
-
-<div class="service">
-    <h2>Création de Localisations pour Votre Entreprise</h2>
-    <p>Nous créons des localisations personnalisées pour votre entreprise, afin que vos clients puissent facilement vous trouver sur la carte <span class="map">map snapchat</span>. Prix : <span class="price">70 €</span>.</p>
-    <div class="image-container">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/13751a45-b5c0-d087-c33b-c7c8999cf15f.jpg" alt="Exemple de localisation" width="300">
-    </div>
-    <p class="description">Cliquez sur ce lien pour voir un exemple : <a href="https://t.snapchat.com/MBfTkatp" target="_blank" class="map">Voir l'exemple</a></p>
-</div>
-
-        
-
-<div class="service">
-    <h2>Création de Sites Web</h2>
-    <p>Je propose mes services de conception de sites web professionnels et conviviaux pour votre entreprise ou votre projet personnel. De plus, je crée chaque site en code HTML, assurant ainsi sa longévité et son autonomie vis-à-vis des plateformes comme Wix ou d'autres sites payants prix :</p>
-    <span class="price">80 €, 130 €, 160 €</span> selon la complexité.</p>
-
-    <div class="small-box-container">
-        <div class="small-box yellow">
-            <a href="lien_vers_page_jaune.html">
-                <h3>FOOD Restauration</h3>
-                <p>COMMANDEZ.</p>
-            </a>
+        <div class="product">
+            <img src="https://example.com/chargeur-iphone.jpg" alt="Chargeur iPhone" class="zoom">
+            <h3>Chargeur iPhone</h3>
+            <p>Prix: 10€</p>
+            <button class="addToCart" data-name="Chargeur iPhone" data-price="10">Ajouter au panier</button>
         </div>
-        <div class="small-box green">
-            <a href="lien_vers_page_vert.html">
-                <h3>"Coiffeur(euse)"</h3>
-                <p> accessoires.</p>
-            </a>
+        <div class="product">
+            <img src="https://example.com/chargeur-samsung.jpg" alt="Chargeur Samsung" class="zoom">
+            <h3>Chargeur Samsung</h3>
+            <p>Prix: 10€</p>
+            <button class="addToCart" data-name="Chargeur Samsung" data-price="10">Ajouter au panier</button>
         </div>
-        <div class="small-box red">
-            <a href="lien_vers_page_rouge.html">
-                <h3>Service de V.T.S</h3>
-                <p>Descrip.</p>
-            </a>
+        <div class="product">
+            <img src="https://example.com/feuille-ocb.jpg" alt="Feuille OCB" class="zoom">
+            <h3>Feuille OCB</h3>
+            <p>Prix: 30€</p>
+            <button class="addToCart" data-name="Feuille OCB" data-price="30">Ajouter au panier</button>
         </div>
     </div>
-</div>
-        
-        <div class="service">
-            <h2>Contact</h2>
-            <p>Pour plus d'informations ou pour passer commande, veuillez nous contacter à l'adresse email suivante : <a href="mailto:oldestlucious@gmail.com">oldestlucious@gmail.com</a> ou par téléphone au : <span class="map">07 44 89 27 83</span></p>
+</main>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Votre Panier</h2>
+            <div id="cartItems"></div>
+            <p>Total: <span id="cartTotal">0€</span></p>
+            <button id="checkoutButton">Finaliser la commande</button>
         </div>
-        <div class="service">
-            <h2>Réunion Webex</h2>
-            <p>Rejoignez notre réunion Webex pour discuter de vos besoins en création numérique : <a href="https://meet374.webex.com/meet/pr27420501817"><button class="button">Rejoindre la réunion</button></a></p>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Finaliser la commande</h2>
+            <form id="checkoutForm" action="https://formspree.io/f/mjkbqoaw" method="POST">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+                <label for="phone">Numéro de téléphone :</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="address">Adresse :</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="delivery">Mode de livraison :</label>
+                <select id="delivery" name="delivery" required>
+                    <option value="retrait">Retrait en magasin</option>
+                    <option value="livraison">Livraison à domicile</option>
+                </select>
+
+                <label for="deliveryTime">Horaires de livraison :</label>
+                <select id="deliveryTime" name="deliveryTime" required>
+                    <option value="" disabled selected>Sélectionnez un créneau horaire</option>
+                    <option value="20h30-21h00">20h30 - 21h00</option>
+                    <option value"21h00-21h30">21h00 - 21h30</option>
+                    <option value="21h30-22h00">21h30 - 22h00</option>
+                    <option value="22h00-22h30">22h00 - 22h30</option>
+                    <option value="22h30-23h00">22h30 - 23h00</option>
+                    <option value="23h00-23h30">23h00 - 23h30</option>
+                    <option value="23h30-00h00">23h30 - 00h00</option>
+                    <option value="00h00-00h30">00h00 - 00h30</option>
+                    <option value="00h30-01h00">00h30 - 01h00</option>
+                    <option value="01h00-01h30">01h00 - 01h30</option>
+                    <option value="01h30-02h00">01h30 - 02h00</option>
+                    <option value="02h00-02h30">02h00 - 02h30</option>
+                    <option value="02h30-03h00">02h30 - 03h00</option>
+                    <option value="03h00-03h30">03h00 - 03h30</option>
+                    <option value="03h30-04h00">03h30 - 04h00</option>
+                    <option value="04h00-04h30">04h00 - 04h30</option>
+                    <option value="04h30-05h00">04h30 - 05h00</option>
+                    <option value="05h00-05h30">05h00 - 05h30</option>
+                </select>
+
+                <button type="submit">Passer la commande</button>
+            </form>
         </div>
     </div>
 
     <script>
-        var lastScrollTop = 0;
-        window.addEventListener("scroll", function() {
-            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            if (currentScroll > lastScrollTop) {
-                // Descendre la page
-                document.querySelector('.creator-name').classList.remove('hide');
+        // Gestion de l'affichage des catégories
+        const categoryButtons = document.querySelectorAll('.categoryButton');
+        const productsSection = document.querySelector('.products');
+        const cartButton = document.getElementById('cartButton');
+        const cartModal = document.getElementById('cartModal');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const cartCount = document.getElementById('cartCount');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+
+        const products = {
+            boissons: [
+                { name: 'Coca Cola', price: 2, img: 'coca.jpg' },
+                { name: 'Pepsi', price: 1.8, img: 'pepsi.jpg' },
+                { name: 'Fanta', price: 2.2, img: 'fanta.jpg' }
+            ],
+            gourmandises: [
+                { name: 'Chocolat', price: 3.5, img: 'chocolat.jpg' },
+                { name: 'Bonbons', price: 2.5, img: 'bonbons.jpg' },
+                { name: 'Cookies', price: 4, img: 'cookies.jpg' }
+            ],
+            'creme-de-luxe': [
+                { name: 'Crème de Luxe 1', price: 20, img: 'creme1.jpg' },
+                { name: 'Crème de Luxe 2', price: 25, img: 'creme2.jpg' }
+            ],
+            'cigarettes-electroniques': [
+                { name: 'Cigarette Électronique 1', price: 40, img: 'cigarette1.jpg' },
+                { name: 'Cigarette Électronique 2', price: 45, img: 'cigarette2.jpg' }
+            ]
+        };
+
+        let cart = [];
+
+        // Fonction pour afficher les produits selon la catégorie
+        function displayProducts(category) {
+            productsSection.innerHTML = '';
+            products[category].forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.price.toFixed(2)}€</p>
+                    <button class="addToCart" data-name="${product.name}" data-price="${product.price}">Ajouter au panier</button>
+                `;
+                productsSection.appendChild(productDiv);
+            });
+
+            // Ajouter au panier
+            const addToCartButtons = document.querySelectorAll('.addToCart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const name = e.target.dataset.name;
+                    const price = parseFloat(e.target.dataset.price);
+                    addToCart({ name, price });
+                });
+            });
+        }
+
+        // Afficher les produits d'une catégorie au clic
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const category = e.target.dataset.category;
+                displayProducts(category);
+            });
+        });
+
+        // Ajouter un produit au panier
+        function addToCart(product) {
+            const existingProduct = cart.find(item => item.name === product.name);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
             } else {
-                // Monter la page
-                document.querySelector('.creator-name').classList.add('hide');
+                cart.push({ ...product, quantity: 1 });
             }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        }, false);
+            updateCart();
+        }
+
+        // Mise à jour du panier
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.innerHTML = `${item.name} - ${item.quantity} x ${item.price.toFixed(2)}€ = ${(item.quantity * item.price).toFixed(2)}€`;
+                cartItemsContainer.appendChild(cartItem);
+                total += item.quantity * item.price;
+            });
+            cartTotal.textContent = total.toFixed(2) + '€';
+            cartCount.textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
+        }
+
+
+// Finalisation de la commande
+document.getElementById('checkoutButton').addEventListener('click', () => {
+    if (cart.length === 0) {
+        alert('Votre panier est vide. Vous devez ajouter des produits avant de finaliser la commande.');
+    } else {
+        cartModal.style.display = 'none';
+        checkoutModal.style.display = 'block';
+    }
+});
+
+
+
+
+    // Gestion du modal du panier
+        cartButton.addEventListener('click', () => {
+            cartModal.style.display = 'block';
+        });
+
+        document.querySelectorAll('.close').forEach(closeButton => {
+            closeButton.addEventListener('click', () => {
+                cartModal.style.display = 'none';
+                checkoutModal.style.display = 'none';
+            });
+        });
+
+        // Finalisation de la commande
+        document.getElementById('checkoutButton').addEventListener('click', () => {
+            cartModal.style.display = 'none';
+            checkoutModal.style.display = 'block';
+        });
+
+        // Fermer les modals en cliquant en dehors
+        window.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+            if (e.target === checkoutModal) {
+                checkoutModal.style.display = 'none';
+            }
+        });
     </script>
 </body>
-</html>
+
+    </html>
