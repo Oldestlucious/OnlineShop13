@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En Ligne Shop</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
-
-    <style>
+   <style>
         * {
             margin: 0;
             padding: 0;
@@ -172,7 +170,7 @@
             background-color: #ff7800;
         }
 
-        #cartTotal {
+        #cartCount {
             font-weight: bold;
             color: #333;
         }
@@ -217,32 +215,7 @@
 <body>
     <header>
         <h1>En Ligne Shop</h1>
-
-        <section class="description">
-            <h2>
-                À propos de nous 
-                <span id="toggleDescription" style="cursor: pointer;">▼</span>
-            </h2>
-            <p id="descriptionText" style="display: none;">
-                Bienvenue sur notre site ! Vous pouvez planifier votre commande pour une livraison entre 21h et 5h30 du matin. Passez votre commande à partir de 20h et choisissez le créneau qui vous convient le mieux.
-            </p>
-        </section>
-
-        <script>
-            const toggleButton = document.getElementById('toggleDescription');
-            const descriptionText = document.getElementById('descriptionText');
-
-            toggleButton.addEventListener('click', () => {
-                if (descriptionText.style.display === 'none') {
-                    descriptionText.style.display = 'block';
-                    toggleButton.textContent = '▲';
-                } else {
-                    descriptionText.style.display = 'none';
-                    toggleButton.textContent = '▼';
-                }
-            });
-        </script>
-
+        <!-- Description et navigation -->
         <nav>
             <button class="categoryButton" data-category="boissons">Boissons</button>
             <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
@@ -253,32 +226,65 @@
     </header>
 
 <main>
-    <div class="products">
-        <div class="product">
-            <img src="https://example.com/montre-connectee.jpg" alt="Montre Connectée" class="zoom">
-            <h3>Montre Connectée</h3>
-            <p>Prix: 45€</p>
-            <button class="addToCart" data-name="Montre Connectée" data-price="45">Ajouter au panier</button>
+    <section id="boissons" class="product-section">
+        <h2>Boissons</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2445985e-f18c-ec53-0449-0bdae8bc83c9.jpeg" alt="Boisson 1" class="zoom">
+                <h3>Soda</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Soda" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Boisson 2" class="zoom">
+                <h3>Jus d'Orange</h3>
+                <p>Prix: 4€</p>
+                <button class="addToCart" data-name="Jus d'Orange" data-price="4">Ajouter au panier</button>
+            </div>
         </div>
-        <div class="product">
-            <img src="https://example.com/chargeur-iphone.jpg" alt="Chargeur iPhone" class="zoom">
-            <h3>Chargeur iPhone</h3>
-            <p>Prix: 10€</p>
-            <button class="addToCart" data-name="Chargeur iPhone" data-price="10">Ajouter au panier</button>
+    </section>
+
+    <section id="gourmandises" class="product-section">
+        <h2>Gourmandises</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b4a07335-f3b5-5581-d2df-2054ef535ac9.jpeg" alt="Gourmandise 1" class="zoom">
+                <h3>Chocolat</h3>
+                <p>Prix: 5€</p>
+                <button class="addToCart" data-name="Chocolat" data-price="5">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eed466aa-2902-11ed-2df0-63d242927461.jpeg" alt="Gourmandise 2" class="zoom">
+                <h3>Bonbons</h3>
+                <p>Prix: 2€</p>
+                <button class="addToCart" data-name="Bonbons" data-price="2">Ajouter au panier</button>
+            </div>
         </div>
-        <div class="product">
-            <img src="https://example.com/chargeur-samsung.jpg" alt="Chargeur Samsung" class="zoom">
-            <h3>Chargeur Samsung</h3>
-            <p>Prix: 10€</p>
-            <button class="addToCart" data-name="Chargeur Samsung" data-price="10">Ajouter au panier</button>
+    </section>
+
+    <section id="creme-de-luxe" class="product-section">
+        <h2>Crème de Luxe</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8e57bd3d-82a9-7fa0-ba60-cabb2c5b2041.jpeg" alt="Crème de Luxe 1" class="zoom">
+                <h3>Crème Hydratante</h3>
+                <p>Prix: 25€</p>
+                <button class="addToCart" data-name="Crème Hydratante" data-price="25">Ajouter au panier</button>
+            </div>
         </div>
-        <div class="product">
-            <img src="https://example.com/feuille-ocb.jpg" alt="Feuille OCB" class="zoom">
-            <h3>Feuille OCB</h3>
-            <p>Prix: 30€</p>
-            <button class="addToCart" data-name="Feuille OCB" data-price="30">Ajouter au panier</button>
+    </section>
+
+    <section id="cigarettes-electroniques" class="product-section">
+        <h2>Cigarettes Électroniques</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f40-580e793f9f2e.jpeg" alt="Cigarette Électronique 1" class="zoom">
+                <h3>Vape 5000 Puffs</h3>
+                <p>Prix: 15€</p>
+                <button class="addToCart" data-name="Vape 5000 Puffs" data-price="15">Ajouter au panier</button>
+            </div>
         </div>
-    </div>
+    </section>
 </main>
 
     <div id="cartModal" class="modal">
@@ -302,175 +308,130 @@
                 <input type="tel" id="phone" name="phone" required>
                 <label for="address">Adresse :</label>
                 <input type="text" id="address" name="address" required>
-
                 <label for="delivery">Mode de livraison :</label>
                 <select id="delivery" name="delivery" required>
                     <option value="retrait">Retrait en magasin</option>
                     <option value="livraison">Livraison à domicile</option>
                 </select>
-
-                <label for="deliveryTime">Horaires de livraison :</label>
+                <label for="deliveryTime">Choisissez l'heure de livraison :</label>
                 <select id="deliveryTime" name="deliveryTime" required>
-                    <option value="" disabled selected>Sélectionnez un créneau horaire</option>
-                    <option value="20h30-21h00">20h30 - 21h00</option>
-                    <option value"21h00-21h30">21h00 - 21h30</option>
-                    <option value="21h30-22h00">21h30 - 22h00</option>
-                    <option value="22h00-22h30">22h00 - 22h30</option>
-                    <option value="22h30-23h00">22h30 - 23h00</option>
-                    <option value="23h00-23h30">23h00 - 23h30</option>
-                    <option value="23h30-00h00">23h30 - 00h00</option>
-                    <option value="00h00-00h30">00h00 - 00h30</option>
-                    <option value="00h30-01h00">00h30 - 01h00</option>
-                    <option value="01h00-01h30">01h00 - 01h30</option>
-                    <option value="01h30-02h00">01h30 - 02h00</option>
-                    <option value="02h00-02h30">02h00 - 02h30</option>
-                    <option value="02h30-03h00">02h30 - 03h00</option>
-                    <option value="03h00-03h30">03h00 - 03h30</option>
-                    <option value="03h30-04h00">03h30 - 04h00</option>
-                    <option value="04h00-04h30">04h00 - 04h30</option>
-                    <option value="04h30-05h00">04h30 - 05h00</option>
-                    <option value="05h00-05h30">05h00 - 05h30</option>
+                    <option value="21:00">21:00</option>
+                    <option value="21:30">21:30</option>
+                    <option value="22:00">22:00</option>
+                    <option value="22:30">22:30</option>
+                    <option value="23:00">23:00</option>
+                    <option value="23:30">23:30</option>
+                    <option value="00:00">00:00</option>
+                    <option value="00:30">00:30</option>
+                    <option value="01:00">01:00</option>
+                    <option value="01:30">01:30</option>
+                    <option value="02:00">02:00</option>
+                    <option value="02:30">02:30</option>
+                    <option value="03:00">03:00</option>
+                    <option value="03:30">03:30</option>
+                    <option value="04:00">04:00</option>
+                    <option value="04:30">04:30</option>
+                    <option value="05:00">05:00</option>
                 </select>
-
-                <button type="submit">Passer la commande</button>
+                <label for="payment">Mode de paiement :</label>
+                <select id="payment" name="payment" required>
+                    <option value="especes">Espèces</option>
+                    <option value="carte">Carte Bleue</option>
+                </select>
+                <input type="hidden" id="cartProducts" name="cartProducts">
+                <button type="submit">Envoyer la commande</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Gestion de l'affichage des catégories
-        const categoryButtons = document.querySelectorAll('.categoryButton');
-        const productsSection = document.querySelector('.products');
-        const cartButton = document.getElementById('cartButton');
-        const cartModal = document.getElementById('cartModal');
-        const checkoutModal = document.getElementById('checkoutModal');
-        const cartCount = document.getElementById('cartCount');
-        const cartItemsContainer = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-
-        const products = {
-            boissons: [
-                { name: 'Coca Cola', price: 2, img: 'coca.jpg' },
-                { name: 'Pepsi', price: 1.8, img: 'pepsi.jpg' },
-                { name: 'Fanta', price: 2.2, img: 'fanta.jpg' }
-            ],
-            gourmandises: [
-                { name: 'Chocolat', price: 3.5, img: 'chocolat.jpg' },
-                { name: 'Bonbons', price: 2.5, img: 'bonbons.jpg' },
-                { name: 'Cookies', price: 4, img: 'cookies.jpg' }
-            ],
-            'creme-de-luxe': [
-                { name: 'Crème de Luxe 1', price: 20, img: 'creme1.jpg' },
-                { name: 'Crème de Luxe 2', price: 25, img: 'creme2.jpg' }
-            ],
-            'cigarettes-electroniques': [
-                { name: 'Cigarette Électronique 1', price: 40, img: 'cigarette1.jpg' },
-                { name: 'Cigarette Électronique 2', price: 45, img: 'cigarette2.jpg' }
-            ]
-        };
-
+        // Panier
         let cart = [];
+        const cartModal = document.getElementById("cartModal");
+        const checkoutModal = document.getElementById("checkoutModal");
+        const cartButton = document.getElementById("cartButton");
+        const checkoutButton = document.getElementById("checkoutButton");
+        const closeModalButtons = document.querySelectorAll(".close");
+        const cartCount = document.getElementById("cartCount");
+        const cartTotal = document.getElementById("cartTotal");
+        const cartItemsContainer = document.getElementById("cartItems");
+        const cartProductsInput = document.getElementById("cartProducts");
 
-        // Fonction pour afficher les produits selon la catégorie
-        function displayProducts(category) {
-            productsSection.innerHTML = '';
-            products[category].forEach(product => {
-                const productDiv = document.createElement('div');
-                productDiv.classList.add('product');
-                productDiv.innerHTML = `
-                    <img src="${product.img}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>${product.price.toFixed(2)}€</p>
-                    <button class="addToCart" data-name="${product.name}" data-price="${product.price}">Ajouter au panier</button>
-                `;
-                productsSection.appendChild(productDiv);
+        function updateCart() {
+            cartCount.textContent = cart.length;
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            const productList = [];
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.innerHTML = `<p>${item.name} - ${item.price}€ <button onclick="removeFromCart(${index})">Supprimer</button></p>`;
+                cartItemsContainer.appendChild(cartItem);
+                total += item.price;
+                productList.push(`${item.name} (${item.price}€)`);
             });
 
-            // Ajouter au panier
-            const addToCartButtons = document.querySelectorAll('.addToCart');
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseFloat(e.target.dataset.price);
-                    addToCart({ name, price });
-                });
-            });
+            cartTotal.textContent = total + "€";
+            cartProductsInput.value = productList.join(', '); // Serialize products for Formspree
         }
 
-        // Afficher les produits d'une catégorie au clic
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const category = e.target.dataset.category;
-                displayProducts(category);
-            });
-        });
-
-        // Ajouter un produit au panier
-        function addToCart(product) {
-            const existingProduct = cart.find(item => item.name === product.name);
-            if (existingProduct) {
-                existingProduct.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
+        function addToCart(name, price) {
+            cart.push({ name, price });
             updateCart();
         }
 
-        // Mise à jour du panier
-        function updateCart() {
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.innerHTML = `${item.name} - ${item.quantity} x ${item.price.toFixed(2)}€ = ${(item.quantity * item.price).toFixed(2)}€`;
-                cartItemsContainer.appendChild(cartItem);
-                total += item.quantity * item.price;
-            });
-            cartTotal.textContent = total.toFixed(2) + '€';
-            cartCount.textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
         }
 
-
-// Finalisation de la commande
-document.getElementById('checkoutButton').addEventListener('click', () => {
-    if (cart.length === 0) {
-        alert('Votre panier est vide. Vous devez ajouter des produits avant de finaliser la commande.');
-    } else {
-        cartModal.style.display = 'none';
-        checkoutModal.style.display = 'block';
-    }
-});
-
-
-
-
-    // Gestion du modal du panier
-        cartButton.addEventListener('click', () => {
-            cartModal.style.display = 'block';
-        });
-
-        document.querySelectorAll('.close').forEach(closeButton => {
-            closeButton.addEventListener('click', () => {
-                cartModal.style.display = 'none';
-                checkoutModal.style.display = 'none';
+        document.querySelectorAll(".addToCart").forEach(button => {
+            button.addEventListener("click", () => {
+                const name = button.getAttribute("data-name");
+                const price = parseFloat(button.getAttribute("data-price"));
+                addToCart(name, price);
             });
         });
 
-        // Finalisation de la commande
-        document.getElementById('checkoutButton').addEventListener('click', () => {
-            cartModal.style.display = 'none';
-            checkoutModal.style.display = 'block';
+        // Modal ouverture/fermeture
+        cartButton.addEventListener("click", () => {
+            cartModal.style.display = "block";
         });
 
-        // Fermer les modals en cliquant en dehors
-        window.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
-                cartModal.style.display = 'none';
-            }
-            if (e.target === checkoutModal) {
-                checkoutModal.style.display = 'none';
-            }
+        checkoutButton.addEventListener("click", () => {
+            cartModal.style.display = "none";
+            checkoutModal.style.display = "block";
         });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                cartModal.style.display = "none";
+                checkoutModal.style.display = "none";
+            });
+        });
+
+        window.onclick = function(event) {
+            if (event.target == cartModal) {
+                cartModal.style.display = "none";
+            }
+            if (event.target == checkoutModal) {
+                checkoutModal.style.display = "none";
+            }
+        }
+
+        // Changement de sections
+        document.querySelectorAll('.categoryButton').forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                document.querySelectorAll('.product-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.(category).style.display = 'block';
+            });
+        });
+
+        // Par défaut, afficher la section Boissons
+        document.getElementById('boissons').style.display = 'block';
     </script>
 </body>
 
