@@ -196,19 +196,68 @@
                 margin-bottom: 20px;
             }
 
-            nav button {
-                padding: 10px;
-                margin-bottom: 10px;
-            }
-        }
+        nav {
+    display: flex;
+    justify-content: center; /* Centre les boutons horizontalement */
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne si l'espace est insuffisant */
+    margin-bottom: 20px; /* Espace sous la navigation */
+}
 
-        .description {
-            background-color: #444;
-            padding: 5px;
-            margin: 20px 0;
-            border-radius: 10px;
-            text-align: center;
-        }
+.categoryButton {
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Supprime la bordure */
+    padding: 10px 20px; /* Espacement interne */
+    margin: 5px; /* Espacement entre les boutons */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Change le curseur au survol */
+    transition: background-color 0.3s; /* Animation de changement de couleur */
+}
+
+.categoryButton:hover {
+    background-color: #0056b3; /* Couleur au survol */
+}
+
+/* Empêcher le débordement des éléments */
+.product-section {
+    display: none; /* Masque par défaut toutes les sections */
+}
+
+.product-section.active {
+    display: block; /* Affiche uniquement la section active */
+}
+
+
+
+
+.description {
+    background-color: #f9f9f9; /* Couleur de fond douce */
+    border: 1px solid #ddd; /* Bordure légère */
+    padding: 15px; /* Espacement intérieur */
+    margin: 20px 0; /* Marge externe */
+    border-radius: 8px; /* Coins arrondis */
+}
+
+.description h2 {
+    font-size: 24px; /* Taille de la police pour le titre */
+    margin: 0; /* Pas de marge */
+    display: flex; /* Flexbox pour aligner le texte et l'icône */
+    justify-content: space-between; /* Espacement entre le texte et l'icône */
+    align-items: center; /* Alignement vertical centré */
+    color: black; /* Couleur du titre en noir */
+}
+
+#toggleDescription {
+    font-size: 18px; /* Taille de l'icône */
+    color: #007BFF; /* Couleur de l'icône */
+}
+
+#descriptionText {
+    margin-top: 10px; /* Marge au-dessus du texte de description */
+    font-size: 16px; /* Taille de la police pour le texte */
+    line-height: 1.5; /* Interligne */
+    color: #000; /* Couleur du texte en noir */
+}
     </style>
 </head>
 
@@ -216,12 +265,14 @@
     <header>
         <h1>En Ligne Shop</h1>
         <!-- Description et navigation -->
-        <nav>
-            <button class="categoryButton" data-category="boissons">Boissons</button>
-            <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
-            <button class="categoryButton" data-category="creme-de-luxe">Crème de Luxe</button>
-            <button class="categoryButton" data-category="cigarettes-electroniques">Cigarettes Électroniques</button>
-        </nav>
+  <nav>
+  
+    <button class="categoryButton" data-category="boissons">Boissons</button>
+    <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
+    <button class="categoryButton" data-category="creme-de-luxe">Crème de Luxe</button>
+    <button class="categoryButton" data-category="cigarettes-electroniques">Cigarettes Électroniques</button>
+    <button class="categoryButton" data-category="epicerie">Épicerie</button>
+</nav>
         <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
     </header>
 <section class="description">
@@ -253,16 +304,64 @@
         <h2>Boissons</h2>
         <div class="products">
             <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2445985e-f18c-ec53-0449-0bdae8bc83c9.jpeg" alt="Boisson 1" class="zoom">
-                <h3>Soda</h3>
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2445985e-f18c-ec53-0449-0bdae8bc83c9.jpeg" alt="Coca Canette" class="zoom">
+                <h3>Coca Canette</h3>
                 <p>Prix: 3€</p>
-                <button class="addToCart" data-name="Soda" data-price="3">Ajouter au panier</button>
+                <button class="addToCart" data-name="Coca Canette" data-price="3">Ajouter au panier</button>
             </div>
             <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Boisson 2" class="zoom">
-                <h3>Jus d'Orange</h3>
-                <p>Prix: 4€</p>
-                <button class="addToCart" data-name="Jus d'Orange" data-price="4">Ajouter au panier</button>
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Coca Chérie" class="zoom">
+                <h3>Coca Chérie</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Coca Chérie" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Coca Zéro" class="zoom">
+                <h3>Coca Zéro</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Coca Zéro" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Fanta Orange" class="zoom">
+                <h3>Fanta Orange</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Fanta Orange" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Fanta Citron" class="zoom">
+                <h3>Fanta Citron</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Fanta Citron" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Lipton Ice Thé" class="zoom">
+                <h3>Lipton Ice Thé</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Lipton Ice Thé" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Oasis Tropical" class="zoom">
+                <h3>Oasis Tropical</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Oasis Tropical" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Oasis Kiwi" class="zoom">
+                <h3>Oasis Kiwi</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Oasis Kiwi" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Tropico Tropical" class="zoom">
+                <h3>Tropico Tropical</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Tropico Tropical" data-price="3">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b26393f6-bcbc-ac95-b5b8-ca8dbcfc93a5.jpeg" alt="Tropico Ananas" class="zoom">
+                <h3>Tropico Ananas</h3>
+                <p>Prix: 3€</p>
+                <button class="addToCart" data-name="Tropico Ananas" data-price="3">Ajouter au panier</button>
             </div>
         </div>
     </section>
@@ -271,16 +370,22 @@
         <h2>Gourmandises</h2>
         <div class="products">
             <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b4a07335-f3b5-5581-d2df-2054ef535ac9.jpeg" alt="Gourmandise 1" class="zoom">
-                <h3>Chocolat</h3>
-                <p>Prix: 5€</p>
-                <button class="addToCart" data-name="Chocolat" data-price="5">Ajouter au panier</button>
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b4a07335-f3b5-5581-d2df-2054ef535ac9.jpeg" alt="Milka Choco" class="zoom">
+                <h3>Milka Choco (100g)</h3>
+                <p>Prix: 4€</p>
+                <button class="addToCart" data-name="Milka Choco" data-price="4">Ajouter au panier</button>
             </div>
             <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eed466aa-2902-11ed-2df0-63d242927461.jpeg" alt="Gourmandise 2" class="zoom">
-                <h3>Bonbons</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Bonbons" data-price="2">Ajouter au panier</button>
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eed466aa-2902-11ed-2df0-63d242927461.jpeg" alt="Savane" class="zoom">
+                <h3>Savane (310g)</h3>
+                <p>Prix: 3.70€</p>
+                <button class="addToCart" data-name="Savane" data-price="3.70">Ajouter au panier</button>
+            </div>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eed466aa-2902-11ed-2df0-63d242927461.jpeg" alt="Nutella B-Ready" class="zoom">
+                <h3>Nutella B-Ready</h3>
+                <p>Prix: 2.50€</p>
+                <button class="addToCart" data-name="Nutella B-Ready" data-price="2.50">Ajouter au panier</button>
             </div>
         </div>
     </section>
@@ -289,27 +394,117 @@
         <h2>Crème de Luxe</h2>
         <div class="products">
             <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8e57bd3d-82a9-7fa0-ba60-cabb2c5b2041.jpeg" alt="Crème de Luxe 1" class="zoom">
-                <h3>Crème Hydratante</h3>
-                <p>Prix: 25€</p>
-                <button class="addToCart" data-name="Crème Hydratante" data-price="25">Ajouter au panier</button>
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8e57bd3d-82a9-7fa0-ba60-cabb2c5b2041.jpeg" alt="Crème Luxe" class="zoom">
+                <h3>Crème Luxe</h3>
+                <p>Prix: 30€ (Livraison incluse)</p>
+                <button class="addToCart" data-name="Crème Luxe" data-price="30">Ajouter au panier</button>
             </div>
-        </div>
-    </section>
-
-    <section id="cigarettes-electroniques" class="product-section">
-        <h2>Cigarettes Électroniques</h2>
-        <div class="products">
             <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f40-580e793f9f2e.jpeg" alt="Cigarette Électronique 1" class="zoom">
-                <h3>Vape 5000 Puffs</h3>
-                <p>Prix: 15€</p>
-                <button class="addToCart" data-name="Vape 5000 Puffs" data-price="15">Ajouter au panier</button>
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8e57bd3d-82a9-7fa0-ba60-cabb2c5b2041.jpeg" alt="Fast Gaz" class="zoom">
+                <h3>Fast Gaz</h3>
+                <p>Prix: 25€ (Livraison incluse)</p>
+                <button class="addToCart" data-name="Fast Gaz" data-price="25">Ajouter au panier</button>
             </div>
-        </div>
-    </section>
-</main>
+         <div class="product">
+                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8e57bd3d-82a9-7fa0-ba60-cabb2c5b2041.jpeg" alt="Crème Hydratante" class="zoom">
+                    <h3>Crème Hydratante</h3>
+                    <p>Prix: 25€</p>
+                    <button class="addToCart" data-name="Crème Hydratante" data-price="25">Ajouter au panier</button>
+                </div>
+            </div>
+        </section>
 
+        <section id="cigarettes-electroniques" class="product-section">
+            <h2>Cigarettes Électroniques</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f40-580e793f9f2e.jpeg" alt="Vape 9000 Lemon" class="zoom">
+                    <h3>Vape 9000 Lemon</h3>
+                    <p>Prix: 15€</p>
+                    <button class="addToCart" data-name="Vape 9000 Lemon" data-price="15">Ajouter au panier</button>
+                </div>
+                <div class="product">
+                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f40-580e793f9f2e.jpeg" alt="Vape 9000 Fraise" class="zoom">
+                    <h3>Vape 9000 Fraise</h3>
+                    <p>Prix: 15€</p>
+                    <button class="addToCart" data-name="Vape 9000 Fraise" data-price="15">Ajouter au panier</button>
+                </div>
+                <div class="product">
+                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f40-580e793f9f2e.jpeg" alt="Vape 15000" class="zoom">
+                    <h3>Vape 15000</h3>
+                    <p>Prix: 15€</p>
+                    <button class="addToCart" data-name="Vape 15000" data-price="15">Ajouter au panier</button>
+                </div>
+            </div>
+        </section>
+        
+        
+<section id="epicerie" class="product-section">
+    <h2>Épicerie</h2>
+    <div class="products">
+        <div class="product">
+            <img src="image-url-soupline" alt="Soupline" class="zoom">
+            <h3>Soupline</h3>
+            <p>Prix: 3€</p>
+            <button class="addToCart" data-name="Soupline" data-price="3">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-deodorant" alt="Déodorant" class="zoom">
+            <h3>Déodorant Nivea</h3>
+            <p>Prix: 5€</p>
+            <button class="addToCart" data-name="Déodorant Nivea" data-price="5">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-axe" alt="Axe Dark Tentation" class="zoom">
+            <h3>Axe Dark Tentation</h3>
+            <p>Prix: 5€</p>
+            <button class="addToCart" data-name="Axe Dark Tentation" data-price="5">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-lait" alt="Lait" class="zoom">
+            <h3>Lait</h3>
+            <p>Prix: 3€</p>
+            <button class="addToCart" data-name="Lait" data-price="3">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-riz" alt="Riz Long Grain" class="zoom">
+            <h3>Riz Long Grain</h3>
+            <p>Prix: 4€</p>
+            <button class="addToCart" data-name="Riz Long Grain" data-price="4">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-coquillettes" alt="Coquillettes" class="zoom">
+            <h3>Coquillettes</h3>
+            <p>Prix: 4.50€</p>
+            <button class="addToCart" data-name="Coquillettes" data-price="4.50">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-huile" alt="Huile de Tournesol" class="zoom">
+            <h3>Huile de Tournesol</h3>
+            <p>Prix: 4€</p>
+            <button class="addToCart" data-name="Huile de Tournesol" data-price="4">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-tomate" alt="Tomate Concentrée" class="zoom">
+            <h3>Tomate Concentrée</h3>
+            <p>Prix: 2.50€</p>
+            <button class="addToCart" data-name="Tomate Concentrée" data-price="2.50">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-cornichons" alt="Cornichons" class="zoom">
+            <h3>Cornichons</h3>
+            <p>Prix: 4€</p>
+            <button class="addToCart" data-name="Cornichons" data-price="4">Ajouter au panier</button>
+        </div>
+        <div class="product">
+            <img src="image-url-olives" alt="Olives" class="zoom">
+            <h3>Olives Vertes</h3>
+            <p>Prix: 2€</p>
+            <button class="addToCart" data-name="Olives Vertes" data-price="2">Ajouter au panier</button>
+        </div>
+    </div>
+</section>
+    </main>
     <div id="cartModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -456,6 +651,21 @@
         // Par défaut, afficher la section Boissons
         document.getElementById('boissons').style.display = 'block';
     </script>
+    
+    <script>
+    document.querySelectorAll('.categoryButton').forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        document.querySelectorAll('.product-section').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(category).style.display = 'block';
+    });
+});
+
+// Par défaut, afficher la section Boissons
+document.getElementById('boissons').style.display = 'block';
+        </script>
 </body>
 
-</html><
+</html>
