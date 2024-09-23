@@ -224,7 +224,30 @@
         </nav>
         <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
     </header>
+<section class="description">
+    <h2>
+        À propos de nous 
+        <span id="toggleDescription" style="cursor: pointer;">▼</span>
+    </h2>
+    <p id="descriptionText" style="display: none;">
+        Bienvenue sur notre site ! Vous pouvez planifier votre commande pour une livraison entre 21h et 5h30 du matin. Passez votre commande à partir de 20h et choisissez le créneau qui vous convient le mieux.
+    </p>
+</section>
 
+<script>
+    const toggleButton = document.getElementById('toggleDescription');
+    const descriptionText = document.getElementById('descriptionText');
+
+    toggleButton.addEventListener('click', () => {
+        if (descriptionText.style.display === 'none') {
+            descriptionText.style.display = 'block';
+            toggleButton.textContent = '▲'; // Flèche vers le haut
+        } else {
+            descriptionText.style.display = 'none';
+            toggleButton.textContent = '▼'; // Flèche vers le bas
+        }
+    });
+</script>
 <main>
     <section id="boissons" class="product-section">
         <h2>Boissons</h2>
