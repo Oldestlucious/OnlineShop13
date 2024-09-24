@@ -287,12 +287,53 @@ form button:hover {
         max-width: 320px;
     }
 }
+
+
+
+
+
+
+.opening-hours {
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+}
+
+.opening-hours.open {
+    color: #4caf50; /* Vert pour ouvert */
+    right: 20px; /* Positionné à droite */
+    top: 20px; /* Positionné en haut */
+}
+
+.opening-hours.closed {
+    color: #f44336; /* Rouge pour fermé */
+    left: 50px; /* Positionné à gauche */
+    top: 20px; /* Positionné en haut */
+}
+
+#closeHours {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#closeHours:hover {
+    color: #ff0000;
+}
     </style>
 </head>
 
 <body>
     <header>
         <h1>En Ligne Shop</h1>
+   <div id="openingHours" class="opening-hours"></div>
         <!-- Description et navigation -->
   <nav>
   
@@ -700,7 +741,37 @@ document.querySelectorAll('.categoryButton').forEach(button => {
 
 // Par défaut, afficher la section Boissons
 document.getElementById('boissons').style.display = 'block';
-        </script>
+        
+        
+
+
+
+function updateOpeningHours() {
+    const now = new Date();
+    const openHour = 20; // 20h
+    const closeHour = 5; // 5h (le lendemain)
+    const currentHour = now.getHours();
+    const messageElement = document.getElementById("openingHours");
+
+    // Vérifie si le magasin est ouvert
+    if (currentHour >= openHour || currentHour < closeHour) {
+        messageElement.className = "opening-hours open";
+        messageElement.innerHTML = "Ouvert aujourd'hui: 20h - 5h";
+    } else {
+        messageElement.className = "opening-hours closed";
+        messageElement.innerHTML = "Fermé";
+    }
+
+    // Vérifie si le magasin est bientôt fermé
+    if (currentHour === 4 || (currentHour === 5 && now.getMinutes() <= 30)) {
+        messageElement.innerHTML = "Bientôt fermé, commandez vite !";
+        messageElement.className = "opening-hours closed";
+    }
+}
+
+// Met à jour l'état d'ouverture dès que la page se charge
+window.onload = updateOpeningHours;
+</script>
 </body>
 
-                                                                                                      </html>
+    </html>
