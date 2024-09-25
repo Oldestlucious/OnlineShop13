@@ -114,7 +114,7 @@ nav {
 .product-section {
     padding: 15px;
     margin: 10px 0;
-    background-color: white;
+    background-color: #333;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     max-width: 1200px;
@@ -207,6 +207,20 @@ nav {
     align-items: center;
 }
 
+/* Contenu du modal avec effet de scroll */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px; /* Largeur maximale du panier */
+    max-height: 80%; /* Hauteur maximale du contenu pour déclencher le scroll */
+    overflow-y: auto; /* Activer le scroll vertical si le contenu dépasse la hauteur */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet visuel */
+    position: relative;
+}
+
+
 .modal-content {
     background-color: #fff;
     padding: 20px;
@@ -243,7 +257,7 @@ form label {
 }
 
 form input, form select {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
@@ -252,7 +266,7 @@ form input, form select {
 }
 
 form button {
-    width: 100%;
+    width: 80%;
     padding: 12px;
     background-color: #007c89;
     border: none;
@@ -288,11 +302,6 @@ form button:hover {
     }
 }
 
-
-
-
-
-
 .opening-hours {
     color: #333;
     padding: 5px 10px;
@@ -306,7 +315,7 @@ form button:hover {
 .opening-hours.open {
     color: #4caf50; /* Vert pour ouvert */
     right: 20px; /* Positionné à droite */
-    top: 70px; /* Positionné en haut */
+    top: 56px; /* Positionné en haut */
 }
 
 .opening-hours.closed {
@@ -774,4 +783,4 @@ window.onload = updateOpeningHours;
 </script>
 </body>
 
-    </html>
+                    </html>
