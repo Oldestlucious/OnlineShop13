@@ -891,3 +891,39 @@ function updateOpeningHours() {
 window.onload = updateOpeningHours;
 </script>
 <script>
+
+
+
+
+
+// Fonction pour défiler jusqu'à la section de la catégorie
+function scrollToCategorySection(category) {
+    const section = document.getElementById(category);
+    
+    if (section) {
+        // Faire défiler jusqu'au début de la section entière (y compris le titre)
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Modification de la fonction de changement de section
+document.querySelectorAll('.categoryButton').forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Masquer toutes les sections de produit
+        document.querySelectorAll('.product-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Afficher la section de la catégorie sélectionnée
+        document.getElementById(category).style.display = 'block';
+
+        // Appeler la fonction pour faire défiler vers le début de la section
+        scrollToCategorySection(category);
+    });
+});
+</script>
+</body>
+
+</html>
