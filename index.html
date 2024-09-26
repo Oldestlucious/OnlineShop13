@@ -336,6 +336,29 @@ form button:hover {
 #closeHours:hover {
     color: #ff0000;
 }
+
+
+
+
+.search-container {
+    margin: 20px;
+    text-align: center;
+}
+
+#search-bar {
+    padding: 10px;
+    width: 80%;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+#search-results {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+}
     </style>
 </head>
 
@@ -344,14 +367,20 @@ form button:hover {
         <h1>En Ligne Shop</h1>
    <div id="openingHours" class="opening-hours"></div>
         <!-- Description et navigation -->
-  <nav>
   
-    <button class="categoryButton" data-category="boissons">Boissons</button>
-    <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
-    <button class="categoryButton" data-category="creme-de-luxe">Crème de Luxe</button>
-    <button class="categoryButton" data-category="cigarettes-electroniques">Cigarettes Électroniques</button>
-    <button class="categoryButton" data-category="epicerie">Épicerie</button>
-</nav>
+
+
+
+
+<div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGR1Vs7gRg/W0xUmiXK97tXUCsFdHykyg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https://www.snapchat.com/add/online-shop13?share_id=IIVwCv2CCvc&locale=fr-FR" target="_blank" rel="noopener">ONLINE Shop 👻</a>
+
         <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
     </header>
 <section class="description">
@@ -378,6 +407,20 @@ form button:hover {
         }
     });
 </script>
+
+<nav>
+  
+    <button class="categoryButton" data-category="boissons">Boissons</button>
+    <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
+    <button class="categoryButton" data-category="creme-de-luxe">Crème de Luxe</button>
+    <button class="categoryButton" data-category="cigarettes-electroniques">Cigarettes Électroniques</button>
+    <button class="categoryButton" data-category="epicerie">Épicerie</button>
+</nav>
+<div class="search-container">
+    <input type="text" id="search-bar" placeholder="Rechercher un produit..." oninput="searchProducts()" />
+</div>
+<!-- Conteneur pour afficher les résultats de la recherche -->
+<div id="search-results"></div>
 <main>
     <section id="boissons" class="product-section">
         <h2>Boissons</h2>
@@ -630,9 +673,8 @@ form button:hover {
             </form>
         </div>
     </div>
-
-    <script>
-       // Panier
+<script>
+// Panier
 let cart = [];
 const cartModal = document.getElementById("cartModal");
 const checkoutModal = document.getElementById("checkoutModal");
@@ -750,8 +792,75 @@ document.querySelectorAll('.categoryButton').forEach(button => {
 
 // Par défaut, afficher la section Boissons
 document.getElementById('boissons').style.display = 'block';
-        
-        
+
+
+// Recherche de produits
+const produits = [
+    { 
+        nom: 'Smartphone XYZ', 
+        description: 'Un smartphone haut de gamme avec un écran de 6,5 pouces et un appareil photo de 108MP.', 
+        price: 500, 
+        image: 'https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/132791e2-5766-0ef2-ad80-e9bd8c096a51.jpeg' 
+    },
+    { 
+        nom: 'Laptop Pro 15', 
+        description: 'Un ordinateur portable puissant pour les professionnels, avec un processeur Intel i9 et 32GB RAM.', 
+        price: 1500, 
+        image: 'https://via.placeholder.com/150x150?text=Laptop+Pro+15' 
+    },
+    { 
+        nom: 'Casque Bluetooth HD', 
+        description: 'Un casque sans fil avec une autonomie de 30 heures et un son haute définition.', 
+        price: 150, 
+        image: 'https://via.placeholder.com/150x150?text=Casque+Bluetooth+HD' 
+    },
+    { 
+        nom: 'Montre Connectée X200', 
+        description: 'Une montre connectée avec suivi de la santé, GPS intégré et notification intelligente.', 
+        price: 200, 
+        image: 'https://via.placeholder.com/150x150?text=Montre+Connect%C3%A9e+X200' 
+    }
+];
+
+// Fonction pour rechercher et afficher les produits
+function searchProducts() {
+    let query = document.getElementById('search-bar').value.toLowerCase();
+    let resultsContainer = document.getElementById('search-results');
+    
+    // Vide les résultats précédents
+    resultsContainer.innerHTML = '';
+
+    // Recherche dans les produits
+    let filteredProducts = produits.filter(function(produit) {
+        return produit.nom.toLowerCase().includes(query);
+    });
+
+    // Affiche les produits correspondants
+    if (filteredProducts.length > 0) {
+        filteredProducts.forEach(function(produit) {
+            let produitElement = document.createElement('div');
+            produitElement.innerHTML = `
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <img src="${produit.image}" alt="${produit.nom}" style="width: 150px; height: 150px; margin-right: 20px;">
+                    <div>
+                        <h3>${produit.nom}</h3>
+                        <p>${produit.description}</p>
+                        <p>${produit.price.toFixed(2)}€</p>
+                        <button onclick="addToCart('${produit.nom}', ${produit.price})">Ajouter au panier</button>
+                    </div>
+                </div>
+            `;
+            produitElement.style.borderBottom = '1px solid #ccc';
+            produitElement.style.padding = '10px 0';
+            resultsContainer.appendChild(produitElement);
+        });
+    } else {
+        resultsContainer.innerHTML = '<p>Aucun produit trouvé</p>';
+    }
+}
+
+
+
 
 
 
@@ -781,6 +890,4 @@ function updateOpeningHours() {
 // Met à jour l'état d'ouverture dès que la page se charge
 window.onload = updateOpeningHours;
 </script>
-</body>
-
-                    </html>
+<script>
