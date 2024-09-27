@@ -359,6 +359,45 @@ form button:hover {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
 }
+
+
+
+.rating {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.stars {
+    color: purple; /* Couleur des étoiles */
+    font-size: 18px; /* Taille des étoiles */
+}
+
+.comments {
+    margin-top: 5px;
+    max-height: 100px; /* Hauteur maximale pour le conteneur des commentaires */
+    overflow-y: auto; /* Scroll vertical si trop de commentaires */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+
+.comment-input {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-comment {
+    width: 100%;
+    margin-top: 5px;
+}
+
+
+
+.comment-input::placeholder {
+    color: #aaa; /* Couleur du placeholder */
+}
     </style>
 </head>
 
@@ -372,14 +411,6 @@ form button:hover {
 
 
 
-<div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGR1Vs7gRg/W0xUmiXK97tXUCsFdHykyg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https://www.snapchat.com/add/online-shop13?share_id=IIVwCv2CCvc&locale=fr-FR" target="_blank" rel="noopener">ONLINE Shop 👻</a>
 
         <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
     </header>
@@ -417,7 +448,7 @@ form button:hover {
     <button class="categoryButton" data-category="epicerie">Épicerie</button>
 </nav>
 <div class="search-container">
-    <input type="text" id="search-bar" placeholder="Rechercher un produit..." oninput="searchProducts()" />
+    <input type="text" id="search-bar" placeholder="Rechercher un produit..." oninput="searchProducts()" onfocus="scrollToSearch()" />
 </div>
 <!-- Conteneur pour afficher les résultats de la recherche -->
 <div id="search-results"></div>
@@ -430,50 +461,26 @@ form button:hover {
                 <h3>Coca Canette</h3>
                 <p>Prix: 2€</p>
                 <button class="addToCart" data-name="Coca Canette" data-price="2">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ☆</span>
+                    <p class="comments" id="comments-coca-canette">"Une boisson rafraîchissante!"</p>
+                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-coca-canette">Soumettre</button>
             </div>
             <div class="product">
                 <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b22a5eb2-a13a-e573-b0b8-198d59dbb24c.jpeg" alt="Coca Chérie" class="zoom">
                 <h3>Coca Cherry</h3>
                 <p>Prix: 2€</p>
                 <button class="addToCart" data-name="Coca Chérie" data-price="2">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ☆</span>
+                    <p class="comments" id="comments-coca-cherry">"Délicieux avec un goût unique!"</p>
+                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-coca-cherry">Soumettre</button>
             </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/87d48081-846c-278e-b7d0-ed79e21feb45.jpeg" alt="Coca Zéro" class="zoom">
-                <h3>Coca Zéro</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Coca Zéro" data-price="2">Ajouter au panier</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f3da2f5a-bd79-9563-88dc-9707b4b0806f.jpeg" alt="Fanta Orange" class="zoom">
-                <h3>Fanta Orange</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Fanta Orange" data-price="2">Ajouter au panier</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/3f25a92e-cd0d-4b0c-ff88-826d9546ec99.jpeg" alt="Fanta Citron" class="zoom">
-                <h3>Fanta Citron</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Fanta Citron" data-price="2">Ajouter au panier</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/65319fd6-d8cb-014e-abe0-daa98fa37ce5.jpg" alt="Lipton Ice Thé" class="zoom">
-                <h3>Lipton Ice Thé</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Lipton Ice Thé" data-price="2">Ajouter au panier</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/0daa80bd-86d8-97af-2521-7197d7a24bbf.jpeg" alt="Oasis Tropical" class="zoom">
-                <h3>Oasis Tropical</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Oasis Tropical" data-price="2">Ajouter au panier</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ec74b2fb-cefc-458b-03fa-8c0171b7da8a.jpeg" alt="Oasis Kiwi" class="zoom">
-                <h3>Oasis Fraise framboise</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Oasis Kiwi" data-price="2">Ajouter au panier</button>
-            </div>
-            
+            <!-- Ajoutez d'autres produits de manière similaire ici -->
         </div>
     </section>
 
@@ -482,21 +489,27 @@ form button:hover {
         <div class="products">
             <div class="product">
                 <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b4a07335-f3b5-5581-d2df-2054ef535ac9.jpeg" alt="Milka Choco" class="zoom">
-                <h3>Kinder bueno</h3>
+                <h3>Kinder Bueno</h3>
                 <p>Prix: 2€</p>
                 <button class="addToCart" data-name="Milka Choco" data-price="4">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ☆</span>
+                    <p class="comments" id="comments-kinder-bueno">"Un délice irrésistible!"</p>
+                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-kinder-bueno">Soumettre</button>
             </div>
             <div class="product">
                 <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c7e5153a-41d1-e806-31f6-e3874686f874.jpeg" alt="Savane" class="zoom">
                 <h3>Savane (310g)</h3>
                 <p>Prix: 4.70€</p>
                 <button class="addToCart" data-name="Savane" data-price="4.70">Ajouter au panier</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/0c312970-2deb-06b8-636b-11ecb0c474b7.jpeg" alt="Nutella B-Ready" class="zoom">
-                <h3>Nutella B-Ready</h3>
-                <p>Prix: 2.50€</p>
-                <button class="addToCart" data-name="Nutella B-Ready" data-price="2.50">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ☆</span>
+                    <p class="comments" id="comments-savane">"Parfait avec le café!"</p>
+                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-savane">Soumettre</button>
             </div>
         </div>
     </section>
@@ -509,113 +522,70 @@ form button:hover {
                 <h3>Fast Gaz</h3>
                 <p>Prix: 25€ (Livraison incluse)</p>
                 <button class="addToCart" data-name="Fast Gaz" data-price="25">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ☆</span>
+                    <p class="comments" id="comments-fast-gaz">"Un excellent produit!"</p>
+                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-fast-gaz">Soumettre</button>
             </div>
-                      <div class="product">
+            <div class="product">
                 <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/17afab33-e69f-668e-069d-2c80767d90fe.jpeg" alt="Crème Luxe" class="zoom">
                 <h3>Crème Luxe</h3>
                 <p>Prix: 30€ (Livraison incluse)</p>
                 <button class="addToCart" data-name="Crème Luxe" data-price="30">Ajouter au panier</button>
-            </div>
-         <div class="product">
-                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/66fa677e-e0e4-48e5-cbb2-50aadfdac96b.jpeg" alt="Crème Hydratante" class="zoom">
-                    <h3>Tank</h3>
-                    <p>Prix: 45€</p>
-                    <button class="addToCart" data-name="Crème Hydratante" data-price="25">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ★</span>
+                    <p class="comments" id="comments-creme-luxe">"Une qualité incroyable!"</p>
                 </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-creme-luxe">Soumettre</button>
             </div>
-        </section>
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/66fa677e-e0e4-48e5-cbb2-50aadfdac96b.jpeg" alt="Crème Hydratante" class="zoom">
+                <h3>Tank</h3>
+                <p>Prix: 45€</p>
+                <button class="addToCart" data-name="Crème Hydratante" data-price="25">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ★</span>
+                    <p class="comments" id="comments-tank">"Un indispensable pour la peau!"</p>
+                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-tank">Soumettre</button>
+            </div>
+        </div>
+    </section>
 
-        <section id="cigarettes-electroniques" class="product-section">
-            <h2>Cigarettes Électroniques</h2>
-            <div class="products">
-                <div class="product">
-                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/53f25042-96e8-ae36-582e-e45407492068.jpeg" alt="Vape 9000 Lemon" class="zoom">
-                    <h3>Vape 9000 Lemon</h3>
-                    <p>Prix: 15€</p>
-                    <button class="addToCart" data-name="Vape 9000 Lemon" data-price="15">Ajouter au panier</button>
+    <section id="cigarettes-electroniques" class="product-section">
+        <h2>Cigarettes Électroniques</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/53f25042-96e8-ae36-582e-e45407492068.jpeg" alt="Vape 9000 Lemon" class="zoom">
+                <h3>Vape 9000 Lemon</h3>
+                <p>Prix: 15€</p>
+                <button class="addToCart" data-name="Vape 9000 Lemon" data-price="15">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ☆</span>
+                    <p class="comments" id="comments-vape-lemon">"Un goût frais!"</p>
                 </div>
-                <div class="product">
-                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f40-580e793f9f2e.jpeg" alt="Vape 9000 Fraise" class="zoom">
-                    <h3>Vape 9000 Fraise</h3>
-                    <p>Prix: 15€</p>
-                    <button class="addToCart" data-name="Vape 9000 Fraise" data-price="15">Ajouter au panier</button>
-                </div>
-                <div class="product">
-                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e9dbe162-98fa-eea9-132e-c35ecc0c49ac.jpg" alt="Vape 15000" class="zoom">
-                    <h3>Vape 15000</h3>
-                    <p>Prix: 15€</p>
-                    <button class="addToCart" data-name="Vape 15000" data-price="15">Ajouter au panier</button>
-                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-vape-lemon">Soumettre</button>
             </div>
-        </section>
-        
-        
-<section id="epicerie" class="product-section">
-    <h2>Épicerie</h2>
-    <div class="products">
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6a796b82-5388-b714-65ec-490aafb9df25.jpeg" alt="Soupline" class="zoom">
-            <h3>Soupline</h3>
-            <p>Prix: 3€</p>
-            <button class="addToCart" data-name="Soupline" data-price="3">Ajouter au panier</button>
+            <div class="product">
+             <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f1f27072174.jpeg" alt="Vape 9000 Ice" class="zoom">
+                <h3>Vape 9000 Ice</h3>
+                <p>Prix: 15€</p>
+                <button class="addToCart" data-name="Vape 9000 Ice" data-price="15">Ajouter au panier</button>
+                <div class="rating">
+                    <span class="stars">★ ★ ★ ★ ☆</span>
+                    <p class="comments" id="comments-vape-ice">"Parfait pour l'été!"</p>
+                </div>
+                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
+                <button class="submit-comment" data-product="comments-vape-ice">Soumettre</button>
+            </div>
         </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5d59e12a-850d-c822-876d-e9a33fcb6d52.jpeg" alt="Déodorant" class="zoom">
-            <h3>Déodorant Nivea</h3>
-            <p>Prix: 5€</p>
-            <button class="addToCart" data-name="Déodorant Nivea" data-price="5">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/99d1ab16-bd07-b29d-c1c4-b52a28f492f8.jpeg" alt="Axe Dark Tentation" class="zoom">
-            <h3>Axe Dark Tentation</h3>
-            <p>Prix: 5€</p>
-            <button class="addToCart" data-name="Axe Dark Tentation" data-price="5">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/3dd8c9ae-e7c6-6591-9461-423e489dbc7b.jpg" alt="Lait" class="zoom">
-            <h3>Lait</h3>
-            <p>Prix: 3€</p>
-            <button class="addToCart" data-name="Lait" data-price="3">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d26ff862-5cb6-a7fa-0a49-d8cc765ed4f4.jpg" alt="Riz Long Grain" class="zoom">
-            <h3>Riz Long Grain</h3>
-            <p>Prix: 4€</p>
-            <button class="addToCart" data-name="Riz Long Grain" data-price="4">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/3ee380e0-7768-aa7c-87cb-3f1f9de01a36.jpeg" alt="Coquillettes" class="zoom">
-            <h3>Coquillettes</h3>
-            <p>Prix: 4.50€</p>
-            <button class="addToCart" data-name="Coquillettes" data-price="4.50">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e64ce68d-08d5-ca64-9a22-183eba6bf858.jpeg" alt="Huile de Tournesol" class="zoom">
-            <h3>Huile de Tournesol</h3>
-            <p>Prix: 4€</p>
-            <button class="addToCart" data-name="Huile de Tournesol" data-price="4">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2581463e-146a-84eb-3cb6-eac6c6e022f6.jpeg" alt="Tomate Concentrée" class="zoom">
-            <h3>Tomate Concentrée</h3>
-            <p>Prix: 2.50€</p>
-            <button class="addToCart" data-name="Tomate Concentrée" data-price="2.50">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5d1d7efe-3411-fba0-8f8a-98f82af070db.jpeg" alt="Cornichons" class="zoom">
-            <h3>Cornichons</h3>
-            <p>Prix: 4€</p>
-            <button class="addToCart" data-name="Cornichons" data-price="4">Ajouter au panier</button>
-        </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/bbe5625b-8439-d5c6-1d88-2a6e1528666c.jpeg" alt="Olives" class="zoom">
-            <h3>Olives Vertes</h3>
-            <p>Prix: 2€</p>
-            <button class="addToCart" data-name="Olives Vertes" data-price="2">Ajouter au panier</button>
-        </div>
-    </div>
-</section>
-    </main>
+    </section>
+</main>
    <div id="cartModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -673,6 +643,19 @@ form button:hover {
             </form>
         </div>
     </div>
+    <script>
+    
+    // Fonction pour faire défiler la page vers la barre de recherche
+function scrollToSearch() {
+    const searchBar = document.getElementById('search-bar');
+    searchBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
+
+
+
+    </script>
 <script>
 // Panier
 let cart = [];
