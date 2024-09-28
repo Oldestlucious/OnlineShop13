@@ -393,10 +393,83 @@ form button:hover {
     margin-top: 5px;
 }
 
-
-
 .comment-input::placeholder {
     color: #aaa; /* Couleur du placeholder */
+}
+
+
+
+
+
+
+
+/* Style du contenu de la modale pour carte bleue */
+.card-modal-content {
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Logos Visa et Mastercard */
+.card-logos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card-logos img {
+    margin: 0 10px;
+    width: 60px;
+}
+
+/* Style des champs du formulaire */
+#cardInfoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#cardInfoForm label {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#cardInfoForm input {
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 85%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#cardInfoForm input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+#cardInfoForm input::placeholder {
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* Style du bouton de validation */
+.btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
 }
     </style>
 </head>
@@ -415,7 +488,8 @@ form button:hover {
     src="https://www.canva.com/design/DAGR8YVkFKI/KlPvtSEu9m_M5J9FCp1nwA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
   </iframe>
 </div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGR8YVkFKI&#x2F;KlPvtSEu9m_M5J9FCp1nwA&#x2F;view?utm_content=DAGR8YVkFKI&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a> 
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGR8YVkFKI&#x2F;KlPvtSEu9m_M5J9FCp1nwA&#x2F;view?utm_content=DAGR8YVkFKI&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a>
+
 
 
         <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
@@ -603,52 +677,116 @@ form button:hover {
     </div>
 </div>
 
-    <div id="checkoutModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Finaliser la commande</h2>
-            <form id="checkoutForm" action="https://formspree.io/f/mjkbqoaw" method="POST">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" required>
-                <label for="phone">Numéro de téléphone :</label>
-                <input type="tel" id="phone" name="phone" required>
-                <label for="address">Adresse :</label>
-                <input type="text" id="address" name="address" required>
-                <label for="delivery">Mode de livraison :</label>
-                <select id="delivery" name="delivery" required>
-                    <option value="retrait">Retrait en magasin</option>
-                    <option value="livraison">Livraison à domicile</option>
-                </select>
-                <label for="deliveryTime">Choisissez l'heure de livraison :</label>
-                <select id="deliveryTime" name="deliveryTime" required>
-                    <option value="21:00">21:00</option>
-                    <option value="21:30">21:30</option>
-                    <option value="22:00">22:00</option>
-                    <option value="22:30">22:30</option>
-                    <option value="23:00">23:00</option>
-                    <option value="23:30">23:30</option>
-                    <option value="00:00">00:00</option>
-                    <option value="00:30">00:30</option>
-                    <option value="01:00">01:00</option>
-                    <option value="01:30">01:30</option>
-                    <option value="02:00">02:00</option>
-                    <option value="02:30">02:30</option>
-                    <option value="03:00">03:00</option>
-                    <option value="03:30">03:30</option>
-                    <option value="04:00">04:00</option>
-                    <option value="04:30">04:30</option>
-                    <option value="05:00">05:00</option>
-                </select>
-                <label for="payment">Mode de paiement :</label>
-                <select id="payment" name="payment" required>
-                    <option value="especes">Espèces</option>
-                    <option value="carte">Carte Bleue</option>
-                </select>
-                <input type="hidden" id="cartProducts" name="cartProducts">
-                <button type="submit">Envoyer la commande</button>
-            </form>
-        </div>
+<!-- Modale principale pour finaliser la commande -->
+<div id="checkoutModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Finaliser la commande</h2>
+        <form id="checkoutForm" action="https://formspree.io/f/mjkbqoaw" method="POST">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Numéro de téléphone :</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Adresse :</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="delivery">Mode de livraison :</label>
+            <select id="delivery" name="delivery" required>
+                <option value="retrait">Retrait en magasin</option>
+                <option value="livraison">Livraison à domicile</option>
+            </select>
+
+            <label for="deliveryTime">Choisissez l'heure de livraison :</label>
+            <select id="deliveryTime" name="deliveryTime" required>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+                <!-- Ajoute les autres options ici... -->
+            </select>
+
+            <label for="payment">Mode de paiement :</label>
+            <select id="payment" name="payment" required>
+                <option value="especes">Espèces</option>
+                <option value="carte" id="carteOption">Carte Bleue</option>
+            </select>
+
+            <input type="hidden" id="cartProducts" name="cartProducts">
+            <button type="submit">Envoyer la commande</button>
+        </form>
     </div>
+</div>
+
+<!-- Modale pour les informations de carte bleue -->
+<div id="cardInfoModal" class="modal">
+    <div class="modal-content card-modal-content">
+        <span class="close-card-modal">&times;</span>
+        <h2>Informations de carte bancaire</h2>
+
+        <!-- Logos des cartes Visa et Mastercard -->
+        <div class="card-logos">
+            <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
+            <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard">
+        </div>
+
+        <form id="cardInfoForm">
+            <label for="cardNumber">Numéro de carte :</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+
+            <label for="cardExpiry">Date d'expiration (MM/AA) :</label>
+            <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/AA" required>
+
+            <label for="cardCVV">CVV :</label>
+            <input type="text" id="cardCVV" name="cardCVV" placeholder="123" required>
+
+            <button type="submit" class="btn-submit">Valider le paiement</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+// Récupérer la modale de carte bleue
+var cardInfoModal = document.getElementById("cardInfoModal");
+
+// Récupérer le bouton de fermeture de la modale de carte bleue
+var closeCardModal = document.querySelector(".close-card-modal");
+
+// Fermer la modale de carte bleue quand l'utilisateur clique sur la croix
+closeCardModal.onclick = function() {
+    cardInfoModal.style.display = "none";
+}
+
+// Récupérer le formulaire de commande
+var checkoutForm = document.getElementById("checkoutForm");
+
+// Récupérer le champ de sélection du mode de paiement
+var paymentSelect = document.getElementById("payment");
+
+// Fonction pour vérifier si tous les champs du formulaire sont remplis
+function isFormValid() {
+    return checkoutForm.checkValidity();
+}
+
+// Ajouter un événement pour écouter les changements dans le mode de paiement
+paymentSelect.addEventListener("change", function() {
+    // Si l'utilisateur sélectionne "Carte Bleue"
+    if (this.value === "carte") {
+        // Vérifier si le formulaire est bien rempli
+        if (isFormValid()) {
+            // Si tous les champs sont remplis, afficher la modale de carte bleue
+            cardInfoModal.style.display = "block";
+        } else {
+            // Sinon, avertir l'utilisateur et ne pas afficher la modale
+            alert("Veuillez remplir tous les champs obligatoires avant de choisir le mode de paiement 'Carte Bleue'.");
+        }
+    } else {
+        // Cacher la modale de carte bleue si un autre mode de paiement est sélectionné
+        cardInfoModal.style.display = "none";
+    }
+});
+</script> 
     <script>
     
     // Fonction pour faire défiler la page vers la barre de recherche
