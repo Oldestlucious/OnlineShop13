@@ -3,6 +3,12 @@
 <html lang="fr">
 
 <head>
+ <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Titre de votre page" />
+    <meta property="og:description" content="Une description attrayante de votre page." />
+    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/07d45d30-5f96-e582-2f0e-7297478f68fe.jpg" />
+    <meta property="og:url" content="https://oldestlucious.github.io/Online_Shop13/" />
+    <meta property="og:type" content="website" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En Ligne Shop</title>
@@ -333,9 +339,20 @@ form button:hover {
     margin-left: 10px;
 }
 
-#closeHours:hover {
-    color: #ff0000;
+
+#closeHours {
+    color: #000; /* Couleur par défaut */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transition pour la couleur et le déplacement */
 }
+
+#closeHours:hover {
+    color: #ff0000; /* Change la couleur en rouge */
+    transform: translateY(5px); /* Déplace l'élément de 5 pixels vers le bas */
+}
+.opening-hours.closed {
+    color: #ff0000; /* Assurez-vous que le texte reste rouge lorsque le magasin est fermé */
+}
+
 
 
 
@@ -595,7 +612,7 @@ form button:hover {
     </section>
 
     <section id="creme-de-luxe" class="product-section">
-        <h2>Crème de Luxe</h2>
+        <h2>Creme deluxe</h2>
         <div class="products">
             <div class="product">
                 <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/074cf10a-4517-2a0e-1d27-7a345df4718c.jpeg" alt="Fast Gaz" class="zoom">
@@ -611,24 +628,24 @@ form button:hover {
             </div>
             <div class="product">
                 <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/17afab33-e69f-668e-069d-2c80767d90fe.jpeg" alt="Crème Luxe" class="zoom">
-                <h3>Crème Luxe</h3>
+                <h3>Creme deluxe</h3>
                 <p>Prix: 30€ (Livraison incluse)</p>
-                <button class="addToCart" data-name="Crème Luxe" data-price="30">Ajouter au panier</button>
+                <button class="addToCart" data-name="Creme deluxe" data-price="30">Ajouter au panier</button>
                 <div class="rating">
                     <span class="stars">★ ★ ★ ★ ★</span>
-                    <p class="comments" id="comments-creme-luxe">"Une qualité incroyable!"</p>
+                    <p class="comments" id="comments-creme-luxe">"Une qualité incroyable et merci 🫡🫡!"</p>
                 </div>
                 <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-creme-luxe">Soumettre</button>
+                <button class="submit-comment" data-product="comments-creme-deluxe">Soumettre</button>
             </div>
             <div class="product">
                 <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/66fa677e-e0e4-48e5-cbb2-50aadfdac96b.jpeg" alt="Crème Hydratante" class="zoom">
                 <h3>Tank</h3>
                 <p>Prix: 45€</p>
-                <button class="addToCart" data-name="Crème Hydratante" data-price="25">Ajouter au panier</button>
+                <button class="addToCart" data-name="Tank" data-price="45">Ajouter au panier</button>
                 <div class="rating">
                     <span class="stars">★ ★ ★ ★ ★</span>
-                    <p class="comments" id="comments-tank">"Un indispensable pour la peau!"</p>
+                    <p class="comments" id="comments-tank">"Marci pour la livraison rapide🤝👌 !"</p>
                 </div>
                 <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
                 <button class="submit-comment" data-product="comments-tank">Soumettre</button>
@@ -1009,7 +1026,7 @@ function updateOpeningHours() {
 
     // Vérifie si le magasin est bientôt fermé
     if (currentHour === 4 || (currentHour === 5 && now.getMinutes() <= 30)) {
-        messageElement.innerHTML = "Bientôt fermé, commandez vite !";
+        messageElement.innerHTML = "Le magasin ferme bientôt, n'attendez pas !"; // Nouveau message
         messageElement.className = "opening-hours closed";
     }
 }
