@@ -175,78 +175,202 @@
 </head>
 <body>
 <section class="product-section">
-    <h1 id="shopTitle">Menu Shop Coffee Savine</h1>
-    <button id="toggleExclusiveBtn" class="toggle-section-btn">COFFEE</button>
-    <button id="homeBtn" class="toggle-section-btn">Retour à l'Accueil</button>
-    <div id="defaultProducts" class="product-list">
-        <!-- Exemples de produits -->
-        <div class="product">
-            <h3>CANETTE 3€</h3>
-            <p>Coca, Oasis, Fanta, Ice Tea</p>
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6e800621-1c3d-6873-6009-34067c6bf220.jpeg" alt="Coca" class="product-icon">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/35301dd6-4fc6-19fa-00ab-f5a3fc8f85f3.jpeg" alt="Oasis" class="product-icon">
-            <img src="chemin/vers/icone-fanta.png" alt="Fanta" class="product-icon">
-            <img src="chemin/vers/icone-ice-tea.png" alt="Ice Tea" class="product-icon">
-            <select class="dropdown" id="canetteSelect">
-                <option value="Coca - 3€">Coca - 3€</option>
-                <option value="Oasis - 3€">Oasis - 3€</option>
-                <option value="Fanta - 3€">Fanta - 3€</option>
-                <option value="Ice Tea - 3€">Ice Tea - 3€</option>
-            </select>
-            <button class="add-to-cart">Ajouter</button>
-        </div>
-        <div class="product">
-            <h3>SNACKS 2€</h3>
-            <p>Chips, Cookies, Bonbons</p>
-            <img src="chemin/vers/icone-chips.png" alt="Chips" class="product-icon">
-            <img src="chemin/vers/icone-cookies.png" alt="Cookies" class="product-icon">
-            <img src="chemin/vers/icone-bonbons.png" alt="Bonbons" class="product-icon">
-            <select class="dropdown" id="snackSelect">
-                <option value="Chips - 2€">Chips - 2€</option>
-                <option value="Cookies - 2€">Cookies - 2€</option>
-                <option value="Bonbons - 2€">Bonbons - 2€</option>
-            </select>
-            <button class="add-to-cart">Ajouter</button>
-        </div>
-        <div class="product">
-            <h3>VIN 50€</h3>
-            <p>Choix de vins exclusifs</p>
-            <img src="chemin/vers/icone-vin.png" alt="Vin" class="product-icon">
-            <select class="dropdown" id="wineSelect">
-                <option value="Vin Rouge - 50€">Vin Rouge - 50€</option>
-                <option value="Vin Blanc - 50€">Vin Blanc - 50€</option>
-                <option value="Vin Rosé - 50€">Vin Rosé - 50€</option>
-            </select>
-            <button class="add-to-cart">Ajouter</button>
-        </div>
+
+
+
+<h1 id="shopTitle">Menu Shop Coffee Savine</h1>
+<button id="toggleExclusiveBtn" class="toggle-section-btn">COFFEE</button>
+<button id="homeBtn" class="toggle-section-btn">Retour à l'Accueil</button>
+<div id="defaultProducts" class="product-list">
+    
+    <!-- CANETTE 3€ -->
+    <div class="product">
+        <h3>CANETTE 3€</h3>
+        <p>Coca, Oasis, Fanta, Ice Tea</p>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6e800621-1c3d-6873-6009-34067c6bf220.jpeg" alt="Coca" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/35301dd6-4fc6-19fa-00ab-f5a3fc8f85f3.jpeg" alt="Oasis" class="product-icon">
+        <img src="chemin/vers/icone-fanta.png" alt="Fanta" class="product-icon">
+        <img src="chemin/vers/icone-ice-tea.png" alt="Ice Tea" class="product-icon">
+        <select class="dropdown" id="canetteSelect">
+            <option value="Coca - 3€">Coca - 3€</option>
+            <option value="Oasis - 3€">Oasis - 3€</option>
+            <option value="Fanta - 3€">Fanta - 3€</option>
+            <option value="Ice Tea - 3€">Ice Tea - 3€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+    
+    <!-- BOUTEILLES 5€ -->
+    <div class="product">
+        <h3>BOUTEILLES 5€</h3>
+        <p>Coca, Sprite, Oasis, Schweppes</p>
+        <img src="chemin/vers/icone-coca.png" alt="Coca" class="product-icon">
+        <img src="chemin/vers/icone-sprite.png" alt="Sprite" class="product-icon">
+        <img src="chemin/vers/icone-oasis.png" alt="Oasis" class="product-icon">
+        <img src="chemin/vers/icone-schweppes.png" alt="Schweppes" class="product-icon">
+        <select class="dropdown" id="bouteilleSelect">
+            <option value="Coca - 5€">Coca - 5€</option>
+            <option value="Sprite - 5€">Sprite - 5€</option>
+            <option value="Oasis - 5€">Oasis - 5€</option>
+            <option value="Schweppes - 5€">Schweppes - 5€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
     </div>
 
-    <!-- Produits exclusifs -->
-    <div id="exclusiveProducts" class="product-list hidden">
-        <h2>Produits Exclusifs</h2>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b6853784-f7d6-42d1-7fd1-87cdf58f0348.jpeg" alt="Chocolat" class="product-icon">
-            <h3>CHOCOLAT ARTISANAL 10€</h3>
-            <p>Fabriqué à partir des meilleures fèves de cacao.</p>
-            <select class="dropdown" id="chocolatSelect">
-                <option value="Chocolat Noir - 10€">Chocolat Noir - 10€</option>
-                <option value="Chocolat au Lait - 10€">Chocolat au Lait - 10€</option>
-                <option value="Chocolat Blanc - 10€">Chocolat Blanc - 10€</option>
-            </select>
-            <button class="add-to-cart">Ajouter</button>
-        </div>
-        <div class="product">
-            <img src="chemin/vers/icone-cafe.png" alt="Café" class="product-icon">
-            <h3>CAFÉ GOURMET 15€</h3>
-            <p>Mélange exclusif de cafés rares.</p>
-            <select class="dropdown" id="cafeSelect">
-                <option value="Café Colombien - 15€">Café Colombien - 15€</option>
-                <option value="Café Éthiopien - 15€">Café Éthiopien - 15€</option>
-                <option value="Café Jamaïcain - 15€">Café Jamaïcain - 15€</option>
-            </select>
-            <button class="add-to-cart">Ajouter</button>
-        </div>
+    <!-- ALCOOL 75CL -->
+    <div class="product">
+        <h3>ALCOOL 75CL</h3>
+        <p>Vodka 70cl - 18€, Whisky 70cl - 25€, Rhum 70cl - 17€, Gin 70cl, Vin - 6€, Champagne - 130€</p>
+        <img src="chemin/vers/icone-vodka.png" alt="Vodka" class="product-icon">
+        <img src="chemin/vers/icone-whisky.png" alt="Whisky" class="product-icon">
+        <img src="chemin/vers/icone-rhum.png" alt="Rhum" class="product-icon">
+        <img src="chemin/vers/icone-vin.png" alt="Vin" class="product-icon">
+        <select class="dropdown" id="alcoolSelect">
+            <option value="Vodka - 18€">Vodka - 18€</option>
+            <option value="Whisky - 25€">Whisky - 25€</option>
+            <option value="Rhum - 17€">Rhum - 17€</option>
+            <option value="Gin - prix inconnu">Gin</option>
+            <option value="Vin - 6€">Vin - 6€</option>
+            <option value="Champagne - 130€">Champagne - 130€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
     </div>
+
+    <!-- DILUENT 6€ -->
+    <div class="product">
+        <h3>DILUENT 6€</h3>
+        <p>Red Bull, Jus de fruit</p>
+        <img src="chemin/vers/icone-red-bull.png" alt="Red Bull" class="product-icon">
+        <img src="chemin/vers/icone-jus.png" alt="Jus de fruit" class="product-icon">
+        <select class="dropdown" id="diluentSelect">
+            <option value="Red Bull - 6€">Red Bull - 6€</option>
+            <option value="Jus de fruit - 6€">Jus de fruit - 6€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- SUCRERIE 5€ -->
+    <div class="product">
+        <h3>SUCRERIE 5€</h3>
+        <p>Chocolat, Barre choco, Paquet bonbon 15g, Cacahuètes, Chips</p>
+        <img src="chemin/vers/icone-chocolat.png" alt="Chocolat" class="product-icon">
+        <img src="chemin/vers/icone-bonbons.png" alt="Bonbons" class="product-icon">
+        <img src="chemin/vers/icone-chips.png" alt="Chips" class="product-icon">
+        <select class="dropdown" id="sucrerieSelect">
+            <option value="Chocolat - 5€">Chocolat - 5€</option>
+            <option value="Barre choco - 5€">Barre choco - 5€</option>
+            <option value="Paquet bonbon 15g - 5€">Paquet bonbon 15g - 5€</option>
+            <option value="Cacahuètes - 5€">Cacahuètes - 5€</option>
+            <option value="Chips - 5€">Chips - 5€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- CIGARETTE -->
+    <div class="product">
+        <h3>CIGARETTE 20€</h3>
+        <p>Marlboro, Camel, Philippe M, Winston</p>
+        <img src="chemin/vers/icone-marlboro.png" alt="Marlboro" class="product-icon">
+        <img src="chemin/vers/icone-camel.png" alt="Camel" class="product-icon">
+        <img src="chemin/vers/icone-philippe-m.png" alt="Philippe M" class="product-icon">
+        <img src="chemin/vers/icone-winston.png" alt="Winston" class="product-icon">
+        <select class="dropdown" id="cigaretteSelect">
+            <option value="Marlboro - 20€">Marlboro - 20€</option>
+            <option value="Camel - 20€">Camel - 20€</option>
+            <option value="Philippe M - 20€">Philippe M - 20€</option>
+            <option value="Winston - 20€">Winston - 20€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- FEUILLES 3€ -->
+    <div class="product">
+        <h3>FEUILLES 3€</h3>
+        <p>OCB, Blunt, Rizla</p>
+        <img src="chemin/vers/icone-ocb.png" alt="OCB" class="product-icon">
+        <img src="chemin/vers/icone-blunt.png" alt="Blunt" class="product-icon">
+        <img src="chemin/vers/icone-rizla.png" alt="Rizla" class="product-icon">
+        <select class="dropdown" id="feuillesSelect">
+            <option value="OCB - 3€">OCB - 3€</option>
+            <option value="Blunt - 3€">Blunt - 3€</option>
+            <option value="Rizla - 3€">Rizla - 3€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+</div>
+
+
+
+
+
+<div id="exclusiveProducts" class="product-list hidden">
+    <h2>MENU DRUID OF CREEPS</h2>
+    
+    <!-- Produit 1: JAUNE MOUSSEUX K BUENO -->
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b6853784-f7d6-42d1-7fd1-87cdf58f0348.jpeg" alt="Jaune Mousseux K Bueno" class="product-icon">
+        <h3>JAUNE MOUSSEUX K BUENO</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="jauneMousseuxBuenoSelect">
+            <option value="Jaune Mousseux K Bueno - 10€ - 3G">10€ - 3G</option>
+            <option value="Jaune Mousseux K Bueno - 20€ - 6G">20€ - 6G</option>
+            <option value="Jaune Mousseux K Bueno - 30€ - 9G">30€ - 9G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 2: FILTRE 1200 GELATO -->
+    <div class="product">
+        <img src="chemin/vers/icone-cafe.png" alt="Filtre 1200 Gelato" class="product-icon">
+        <h3>FILTRE 1200 GELATO</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="filtreGelatoSelect">
+            <option value="Filtre 1200 Gelato - 30€ - 5G">30€ - 5G</option>
+            <option value="Filtre 1200 Gelato - 70€ - 10G">70€ - 10G</option>
+            <option value="Filtre 1200 Gelato - 280€ - 50G">280€ - 50G</option>
+            <option value="Filtre 1200 Gelato - 600€ - cali amnesia ALIEN OG">600€ - cali amnesia ALIEN OG</option>
+            <option value="Filtre 1200 Gelato - 20€ - 2.5G">20€ - 2.5G</option>
+            <option value="Filtre 1200 Gelato - 40€ - 4.5G">40€ - 4.5G</option>
+            <option value="Filtre 1200 Gelato - 300€ - 50G">300€ - 50G</option>
+            <option value="Filtre 1200 Gelato - 550€ - 100G">550€ - 100G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 3: COCAINE MARADONA -->
+    <div class="product">
+        <img src="https://example.com/path/to/maradona-icon.png" alt="Cocaine Maradona" class="product-icon">
+        <h3>COCAINE MARADONA</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="cocaineMaradonaSelect">
+            <option value="Cocaine Maradona - 20€ - 0.2G">20€ - 0.2G</option>
+            <option value="Cocaine Maradona - 40€ - 0.5G">40€ - 0.5G</option>
+            <option value="Cocaine Maradona - 300€ - 5G">300€ - 5G</option>
+            <option value="Cocaine Maradona - 500€ - 10G">500€ - 10G</option>
+            <option value="Cocaine Maradona - 60€ - 1.16G">60€ - 1.16G</option>
+            <option value="Cocaine Maradona - 1750€ - 50G">1750€ - 50G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 4: ECSTASY AUDI -->
+    <div class="product">
+        <img src="https://example.com/path/to/audi-icon.png" alt="Ecstasy Audi" class="product-icon">
+        <h3>ECSTASY AUDI</h3>
+        <p>ARRIVAGES IMMINENT</p>
+        <select class="dropdown" id="ecstasyAudiSelect">
+            <option value="Ecstasy Audi - 10€ - 1 unité">10€ - 1 unité</option>
+            <option value="Ecstasy Audi - 15€ - 2 unité">15€ - 2 unité</option>
+            <option value="Ecstasy Audi - 25€ - 3 unité">25€ - 3 unité</option>
+            <option value="Ecstasy Audi - 30€ - 4 unité">30€ - 4 unité</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+</div>
+
+
+
+
 
     <!-- Fenêtre modale pour afficher l'image agrandie -->
     <div id="imageModal" class="modal">
@@ -418,4 +542,4 @@ document.getElementById('imageModal').addEventListener('click', function(event) 
 });
     </script>
 </body>
-             </html>
+</html>
