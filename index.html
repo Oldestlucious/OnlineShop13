@@ -1,1073 +1,421 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
- <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Online Shop" />
-    <meta property="og:description" content="Pour les hiboux du soir ." />
-    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/7bb48d53-63dc-b713-a452-f3160a601031.jpg" />
-    <meta property="og:url" content="https://oldestlucious.github.io/Online_Shop13/" />
-    <meta property="og:type" content="website" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En Ligne Shop</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
-  <style>
-/* Importation de la police */
-@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+    <title>Menu Shop Coffee Savine</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
 
-/* Général */
-body {
-    font-family: 'Protest Guerrilla', sans-serif;
-    background-color: #f7f8fa; /* Un blanc doux pour un effet propre et agréable */
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+        }
+
+        .product-section {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .product {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select, .add-to-cart {
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart {
+            padding: 10px 20px;
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #FF3F2A;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Styles pour la modale du panier */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            color: #FF5733;
+        }
+
+        /* Styles pour le bouton flottant du panier */
+        #floatingCartBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #floatingCartBtn:hover {
+            background-color: #FF3F2A;
+        }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Styles pour les boutons supplémentaires */
+        .toggle-section-btn {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-section-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #homeBtn {
+            display: none; /* Caché par défaut */
+        }
+        
+.product-icon {
+    width: 30px; /* largeur de l'icône */
+    height: auto; /* hauteur automatique pour maintenir le ratio */
+    margin-right: 10px; /* espacement à droite */
+    cursor: pointer; /* curseur pour indiquer que l'image est cliquable */
+    transition: transform 0.3s; /* transition douce pour l'agrandissement */
 }
 
-h1, h2, h3 {
-    color: #333;
-    font-weight: bold;
+.product-icon:hover {
+    transform: scale(1.1); /* léger agrandissement au survol */
 }
 
-h1 {
-    font-size: 2.2rem; /* Taille légèrement réduite pour un rendu plus équilibré */
-    text-align: center;
-    margin-top: 20px;
-    color: #2c3e50;
-}
-
-h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: #007c89; /* Accent color (vert doux pour les titres) */
-}
-
-h3 {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-    color: #2c3e50;
-}
-
-p {
-    color: #666;
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
-button {
-    font-family: 'Protest Guerrilla', sans-serif;
-    background-color: #007c89;
-    color: white;
-    border: none;
-    padding: 8px 18px; /* Taille de bouton plus petite pour un aspect propre */
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    font-size: 1rem;
-}
-
-button:hover {
-    background-color: #005f6a;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding: 10px 0;
-}
-
-.categoryButton {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #007c89;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.categoryButton:hover {
-    background-color: #005f6a;
-}
-
-#cartButton {
-    position: fixed;
-    top: 654px;
-    right: 20px;
-    background-color: #007c89;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s;
-}
-
-#cartButton:hover {
-    background-color: #005f6a;
-}
-
-/* Section produits */
-.product-section {
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #333;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.product {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 220px;
-    transition: transform 0.3s ease;
-}
-
-.product:hover {
-    transform: translateY(-5px);
-}
-
-.product img {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease;
-}
-
-.product:hover img {
-    transform: scale(1.05);
-}
-
-.addToCart {
-    background-color: #007c89;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.addToCart:hover {
-    background-color: #005f6a;
-}
-
-/* Description */
-.description {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.description h2 {
-    font-size: 1.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #2c3e50;
-}
-
-.description p {
-    font-size: 1rem;
-    color: #555;
-}
-
-/* Modal Panier */
+/* Style pour la fenêtre modale */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
+    display: none; /* caché par défaut */
+    position: fixed; /* position fixe */
+    z-index: 1000; /* au-dessus de tout le reste */
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
+    top: 0;
+    width: 100%; /* plein écran */
+    height: 100%; /* plein écran */
+    background-color: rgba(0, 0, 0, 0.8); /* fond semi-transparent */
+    justify-content: center; /* centrer horizontalement */
+    align-items: center; /* centrer verticalement */
 }
 
-/* Contenu du modal avec effet de scroll */
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    width: 90%;
-    max-width: 600px; /* Largeur maximale du panier */
-    max-height: 80%; /* Hauteur maximale du contenu pour déclencher le scroll */
-    overflow-y: auto; /* Activer le scroll vertical si le contenu dépasse la hauteur */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet visuel */
-    position: relative;
-}
-
-
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content h2 {
-    margin-top: 0;
-    color: #007c89;
-}
-
-#cartItems {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Formulaire de commande */
-form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-form input, form select {
-    width: 50%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 15px;
-}
-
-form button {
-    width: 80%;
-    padding: 12px;
-    background-color: #007c89;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-form button:hover {
-    background-color: #005f6a;
-}
-
-#checkoutButton {
-    background-color: #28a745;
-    margin-top: 20px;
-}
-
-#checkoutButton:hover {
-    background-color: #218838;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    nav {
-        flex-wrap: wrap;
-    }
-
-    .product {
-        width: 100%;
-        max-width: 320px;
-    }
-}
-
-.opening-hours {
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    z-index: 1000;
-}
-
-.opening-hours.open {
-    color: #4caf50; /* Vert pour ouvert */
-    right: 20px; /* Positionné à droite */
-    top: 56px; /* Positionné en haut */
-}
-
-.opening-hours.closed {
-    color: #f44336; /* Rouge pour fermé */
-    left: 50px; /* Positionné à gauche */
-    top: 20px; /* Positionné en haut */
-}
-
-#closeHours {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 1.5rem;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-
-#closeHours {
-    color: #000; /* Couleur par défaut */
-    transition: color 0.3s ease, transform 0.3s ease; /* Transition pour la couleur et le déplacement */
-}
-
-#closeHours:hover {
-    color: #ff0000; /* Change la couleur en rouge */
-    transform: translateY(5px); /* Déplace l'élément de 5 pixels vers le bas */
-}
-.opening-hours.closed {
-    color: #ff0000; /* Assurez-vous que le texte reste rouge lorsque le magasin est fermé */
-}
-
-
-
-
-
-.search-container {
-    margin: 20px;
-    text-align: center;
-}
-
-#search-bar {
-    padding: 10px;
-    width: 80%;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-}
-
-#search-results {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-}
-
-
-
-.rating {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.stars {
-    color: purple; /* Couleur des étoiles */
-    font-size: 18px; /* Taille des étoiles */
-}
-
-.comments {
-    margin-top: 5px;
-    max-height: 100px; /* Hauteur maximale pour le conteneur des commentaires */
-    overflow-y: auto; /* Scroll vertical si trop de commentaires */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #f9f9f9;
-}
-
-.comment-input {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.submit-comment {
-    width: 100%;
-    margin-top: 5px;
-}
-
-.comment-input::placeholder {
-    color: #aaa; /* Couleur du placeholder */
-}
-
-
-
-
-
-
-
-/* Style du contenu de la modale pour carte bleue */
-.card-modal-content {
-    padding: 30px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Logos Visa et Mastercard */
-.card-logos {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.card-logos img {
-    margin: 0 10px;
-    width: 60px;
-}
-
-/* Style des champs du formulaire */
-#cardInfoForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#cardInfoForm label {
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-#cardInfoForm input {
-    padding: 12px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 85%;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-#cardInfoForm input:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-#cardInfoForm input::placeholder {
-    color: #999;
-    font-size: 0.9em;
-}
-
-/* Style du bouton de validation */
-.btn-submit {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-    background-color: #45a049;
+.modal img {
+    max-width: 80%; /* largeur maximum de l'image */
+    max-height: 80%; /* hauteur maximum de l'image */
+    border-radius: 10px; /* coins arrondis pour l'image */
 }
     </style>
 </head>
-
 <body>
-    <header>
-        <h1>En Ligne Shop</h1>
-   <div id="openingHours" class="opening-hours"></div>
-        <!-- Description et navigation -->
-  
-
-<div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGR8YVkFKI/KlPvtSEu9m_M5J9FCp1nwA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGR8YVkFKI&#x2F;KlPvtSEu9m_M5J9FCp1nwA&#x2F;view?utm_content=DAGR8YVkFKI&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a>
-
-
-
-        <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
-    </header>
-<section class="description">
-    <h2>
-        À propos de nous 
-        <span id="toggleDescription" style="cursor: pointer;">▼</span>
-    </h2>
-    <p id="descriptionText" style="display: none;">
-        Bienvenue sur notre site ! Vous pouvez planifier votre commande pour une livraison entre 21h et 5h30 du matin. Passez votre commande à partir de 20h et choisissez le créneau qui vous convient le mieux.
-    </p>
-</section>
-
-<script>
-    const toggleButton = document.getElementById('toggleDescription');
-    const descriptionText = document.getElementById('descriptionText');
-
-    toggleButton.addEventListener('click', () => {
-        if (descriptionText.style.display === 'none') {
-            descriptionText.style.display = 'block';
-            toggleButton.textContent = '▲'; // Flèche vers le haut
-        } else {
-            descriptionText.style.display = 'none';
-            toggleButton.textContent = '▼'; // Flèche vers le bas
-        }
-    });
-</script>
-
-<nav>
-  
-    <button class="categoryButton" data-category="boissons">Boissons</button>
-    <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
-    <button class="categoryButton" data-category="creme-de-luxe">Crème de Luxe</button>
-    <button class="categoryButton" data-category="cigarettes-electroniques">Cigarettes Électroniques</button>
-    <button class="categoryButton" data-category="epicerie">Épicerie</button>
-</nav>
-<div class="search-container">
-    <input type="text" id="search-bar" placeholder="Rechercher un produit..." oninput="searchProducts()" onfocus="scrollToSearch()" />
-</div>
-<!-- Conteneur pour afficher les résultats de la recherche -->
-<div id="search-results"></div>
-<main>
-    <section id="boissons" class="product-section">
-        <h2>Boissons</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2445985e-f18c-ec53-0449-0bdae8bc83c9.jpeg" alt="Coca Canette" class="zoom">
-                <h3>Coca Canette</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Coca Canette" data-price="2">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-coca-canette">"Une boisson rafraîchissante!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-coca-canette">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b22a5eb2-a13a-e573-b0b8-198d59dbb24c.jpeg" alt="Coca Chérie" class="zoom">
-                <h3>Coca Cherry</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Coca Chérie" data-price="2">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-coca-cherry">"Délicieux avec un goût unique!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-coca-cherry">Soumettre</button>
-            </div>
-            <!-- Ajoutez d'autres produits de manière similaire ici -->
-        </div>
-    </section>
-
-    <section id="gourmandises" class="product-section">
-        <h2>Gourmandises</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b4a07335-f3b5-5581-d2df-2054ef535ac9.jpeg" alt="Milka Choco" class="zoom">
-                <h3>Kinder Bueno</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Milka Choco" data-price="4">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-kinder-bueno">"Un délice irrésistible!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-kinder-bueno">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c7e5153a-41d1-e806-31f6-e3874686f874.jpeg" alt="Savane" class="zoom">
-                <h3>Savane (310g)</h3>
-                <p>Prix: 4.70€</p>
-                <button class="addToCart" data-name="Savane" data-price="4.70">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-savane">"Parfait avec le café!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-savane">Soumettre</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="creme-de-luxe" class="product-section">
-        <h2>Creme deluxe</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/074cf10a-4517-2a0e-1d27-7a345df4718c.jpeg" alt="Fast Gaz" class="zoom">
-                <h3>Fast Gaz</h3>
-                <p>Prix: 25€ (Livraison incluse)</p>
-                <button class="addToCart" data-name="Fast Gaz" data-price="25">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-fast-gaz">"Un excellent produit!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-fast-gaz">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/17afab33-e69f-668e-069d-2c80767d90fe.jpeg" alt="Crème Luxe" class="zoom">
-                <h3>Creme deluxe</h3>
-                <p>Prix: 30€ (Livraison incluse)</p>
-                <button class="addToCart" data-name="Creme deluxe" data-price="30">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ★</span>
-                    <p class="comments" id="comments-creme-luxe">"Une qualité incroyable et merci 🫡🫡!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-creme-deluxe">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/66fa677e-e0e4-48e5-cbb2-50aadfdac96b.jpeg" alt="Crème Hydratante" class="zoom">
-                <h3>Tank</h3>
-                <p>Prix: 45€</p>
-                <button class="addToCart" data-name="Tank" data-price="45">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ★</span>
-                    <p class="comments" id="comments-tank">"Marci pour la livraison rapide🤝👌 !"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-tank">Soumettre</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="cigarettes-electroniques" class="product-section">
-        <h2>Cigarettes Électroniques</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/53f25042-96e8-ae36-582e-e45407492068.jpeg" alt="Vape 9000 Lemon" class="zoom">
-                <h3>Vape 9000 Lemon</h3>
-                <p>Prix: 15€</p>
-                <button class="addToCart" data-name="Vape 9000 Lemon" data-price="15">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-vape-lemon">"Un goût frais!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-vape-lemon">Soumettre</button>
-            </div>
-            <div class="product">
-             <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f1f27072174.jpeg" alt="Vape 9000 Ice" class="zoom">
-                <h3>Vape 9000 Ice</h3>
-                <p>Prix: 15€</p>
-                <button class="addToCart" data-name="Vape 9000 Ice" data-price="15">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-vape-ice">"Parfait pour l'été!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-vape-ice">Soumettre</button>
-            </div>
-        </div>
-    </section>
-</main>
-   <div id="cartModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Votre Panier</h2>
-        <div id="cartItems"></div>
-        <p>Total: <span id="cartTotal">0€</span></p>
-        <p>Frais de livraison: <span id="deliveryFee">5.00€</span></p>
-        <button id="checkoutButton">Finaliser la commande</button>
-    </div>
-</div>
-
-<!-- Modale principale pour finaliser la commande -->
-<div id="checkoutModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Finaliser la commande</h2>
-        <form id="checkoutForm" action="https://formspree.io/f/mjkbqoaw" method="POST">
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="phone">Numéro de téléphone :</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="address">Adresse :</label>
-            <input type="text" id="address" name="address" required>
-
-            <label for="delivery">Mode de livraison :</label>
-            <select id="delivery" name="delivery" required>
-                <option value="retrait">Retrait en magasin</option>
-                <option value="livraison">Livraison à domicile</option>
+<section class="product-section">
+    <h1 id="shopTitle">Menu Shop Coffee Savine</h1>
+    <button id="toggleExclusiveBtn" class="toggle-section-btn">COFFEE</button>
+    <button id="homeBtn" class="toggle-section-btn">Retour à l'Accueil</button>
+    <div id="defaultProducts" class="product-list">
+        <!-- Exemples de produits -->
+        <div class="product">
+            <h3>CANETTE 3€</h3>
+            <p>Coca, Oasis, Fanta, Ice Tea</p>
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6e800621-1c3d-6873-6009-34067c6bf220.jpeg" alt="Coca" class="product-icon">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/35301dd6-4fc6-19fa-00ab-f5a3fc8f85f3.jpeg" alt="Oasis" class="product-icon">
+            <img src="chemin/vers/icone-fanta.png" alt="Fanta" class="product-icon">
+            <img src="chemin/vers/icone-ice-tea.png" alt="Ice Tea" class="product-icon">
+            <select class="dropdown" id="canetteSelect">
+                <option value="Coca - 3€">Coca - 3€</option>
+                <option value="Oasis - 3€">Oasis - 3€</option>
+                <option value="Fanta - 3€">Fanta - 3€</option>
+                <option value="Ice Tea - 3€">Ice Tea - 3€</option>
             </select>
-
-            <label for="deliveryTime">Choisissez l'heure de livraison :</label>
-            <select id="deliveryTime" name="deliveryTime" required>
-                <option value="21:00">21:00</option>
-                <option value="21:30">21:30</option>
-                <!-- Ajoute les autres options ici... -->
-            </select>
-
-            <label for="payment">Mode de paiement :</label>
-            <select id="payment" name="payment" required>
-                <option value="especes">Espèces</option>
-                <option value="carte" id="carteOption">Carte Bleue</option>
-            </select>
-
-            <input type="hidden" id="cartProducts" name="cartProducts">
-            <button type="submit">Envoyer la commande</button>
-        </form>
-    </div>
-</div>
-
-<!-- Modale pour les informations de carte bleue -->
-<div id="cardInfoModal" class="modal">
-    <div class="modal-content card-modal-content">
-        <span class="close-card-modal">&times;</span>
-        <h2>Informations de carte bancaire</h2>
-
-        <!-- Logos des cartes Visa et Mastercard -->
-        <div class="card-logos">
-            <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
-            <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard">
+            <button class="add-to-cart">Ajouter</button>
         </div>
-
-        <form id="cardInfoForm">
-            <label for="cardNumber">Numéro de carte :</label>
-            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
-
-            <label for="cardExpiry">Date d'expiration (MM/AA) :</label>
-            <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/AA" required>
-
-            <label for="cardCVV">CVV :</label>
-            <input type="text" id="cardCVV" name="cardCVV" placeholder="123" required>
-
-            <button type="submit" class="btn-submit">Valider le paiement</button>
-        </form>
+        <div class="product">
+            <h3>SNACKS 2€</h3>
+            <p>Chips, Cookies, Bonbons</p>
+            <img src="chemin/vers/icone-chips.png" alt="Chips" class="product-icon">
+            <img src="chemin/vers/icone-cookies.png" alt="Cookies" class="product-icon">
+            <img src="chemin/vers/icone-bonbons.png" alt="Bonbons" class="product-icon">
+            <select class="dropdown" id="snackSelect">
+                <option value="Chips - 2€">Chips - 2€</option>
+                <option value="Cookies - 2€">Cookies - 2€</option>
+                <option value="Bonbons - 2€">Bonbons - 2€</option>
+            </select>
+            <button class="add-to-cart">Ajouter</button>
+        </div>
+        <div class="product">
+            <h3>VIN 50€</h3>
+            <p>Choix de vins exclusifs</p>
+            <img src="chemin/vers/icone-vin.png" alt="Vin" class="product-icon">
+            <select class="dropdown" id="wineSelect">
+                <option value="Vin Rouge - 50€">Vin Rouge - 50€</option>
+                <option value="Vin Blanc - 50€">Vin Blanc - 50€</option>
+                <option value="Vin Rosé - 50€">Vin Rosé - 50€</option>
+            </select>
+            <button class="add-to-cart">Ajouter</button>
+        </div>
     </div>
-</div>
 
+    <!-- Produits exclusifs -->
+    <div id="exclusiveProducts" class="product-list hidden">
+        <h2>Produits Exclusifs</h2>
+        <div class="product">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b6853784-f7d6-42d1-7fd1-87cdf58f0348.jpeg" alt="Chocolat" class="product-icon">
+            <h3>CHOCOLAT ARTISANAL 10€</h3>
+            <p>Fabriqué à partir des meilleures fèves de cacao.</p>
+            <select class="dropdown" id="chocolatSelect">
+                <option value="Chocolat Noir - 10€">Chocolat Noir - 10€</option>
+                <option value="Chocolat au Lait - 10€">Chocolat au Lait - 10€</option>
+                <option value="Chocolat Blanc - 10€">Chocolat Blanc - 10€</option>
+            </select>
+            <button class="add-to-cart">Ajouter</button>
+        </div>
+        <div class="product">
+            <img src="chemin/vers/icone-cafe.png" alt="Café" class="product-icon">
+            <h3>CAFÉ GOURMET 15€</h3>
+            <p>Mélange exclusif de cafés rares.</p>
+            <select class="dropdown" id="cafeSelect">
+                <option value="Café Colombien - 15€">Café Colombien - 15€</option>
+                <option value="Café Éthiopien - 15€">Café Éthiopien - 15€</option>
+                <option value="Café Jamaïcain - 15€">Café Jamaïcain - 15€</option>
+            </select>
+            <button class="add-to-cart">Ajouter</button>
+        </div>
+    </div>
 
-<script>
+    <!-- Fenêtre modale pour afficher l'image agrandie -->
+    <div id="imageModal" class="modal">
+        <img id="modalImage" src="" alt="Image Agrandie">
+    </div>
 
-// Récupérer la modale de carte bleue
-var cardInfoModal = document.getElementById("cardInfoModal");
+    <button id="floatingCartBtn">🛒</button>
 
-// Récupérer le bouton de fermeture de la modale de carte bleue
-var closeCardModal = document.querySelector(".close-card-modal");
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Votre Panier</h2>
+            <ul id="cartItems"></ul>
+            <p id="totalPrice">Total: 0€</p>
+            <button id="submitOrder">Commander</button>
+        </div>
+    </div>
 
-// Fermer la modale de carte bleue quand l'utilisateur clique sur la croix
-closeCardModal.onclick = function() {
-    cardInfoModal.style.display = "none";
-}
+    <!-- Notification de succès -->
+    <div class="notification" id="notification" style="display: none;">
+        Produit ajouté au panier !
+    </div>
 
-// Récupérer le formulaire de commande
-var checkoutForm = document.getElementById("checkoutForm");
-
-// Récupérer le champ de sélection du mode de paiement
-var paymentSelect = document.getElementById("payment");
-
-// Fonction pour vérifier si tous les champs du formulaire sont remplis
-function isFormValid() {
-    return checkoutForm.checkValidity();
-}
-
-// Ajouter un événement pour écouter les changements dans le mode de paiement
-paymentSelect.addEventListener("change", function() {
-    // Si l'utilisateur sélectionne "Carte Bleue"
-    if (this.value === "carte") {
-        // Vérifier si le formulaire est bien rempli
-        if (isFormValid()) {
-            // Si tous les champs sont remplis, afficher la modale de carte bleue
-            cardInfoModal.style.display = "block";
-        } else {
-            // Sinon, avertir l'utilisateur et ne pas afficher la modale
-            alert("Veuillez remplir tous les champs obligatoires avant de choisir le mode de paiement 'Carte Bleue'.");
-        }
-    } else {
-        // Cacher la modale de carte bleue si un autre mode de paiement est sélectionné
-        cardInfoModal.style.display = "none";
-    }
-});
-</script> 
     <script>
-    
-    // Fonction pour faire défiler la page vers la barre de recherche
-function scrollToSearch() {
-    const searchBar = document.getElementById('search-bar');
-    searchBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+        let cart = [];
+        let totalPrice = 0;
+        const cartModal = document.getElementById("cartModal");
+        const cartItemsList = document.getElementById("cartItems");
+        const totalPriceDisplay = document.getElementById("totalPrice");
+        const notification = document.getElementById("notification");
+        const toggleExclusiveBtn = document.getElementById("toggleExclusiveBtn");
+        const homeBtn = document.getElementById("homeBtn");
 
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            totalPrice += price;
+            updateCartDisplay();
+            showNotification(`${product} a été ajouté au panier.`);
+        }
 
+        function updateCartDisplay() {
+            cartItemsList.innerHTML = ''; // Réinitialiser l'affichage du panier
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.product} - ${item.price.toFixed(2)}€`;
+                cartItemsList.appendChild(li);
+            });
+            totalPriceDisplay.textContent = `Total: ${totalPrice.toFixed(2)}€`;
+        }
 
-
-
-    </script>
-<script>
-// Panier
-let cart = [];
-const cartModal = document.getElementById("cartModal");
-const checkoutModal = document.getElementById("checkoutModal");
-const cartButton = document.getElementById("cartButton");
-const checkoutButton = document.getElementById("checkoutButton");
-const closeModalButtons = document.querySelectorAll(".close");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-const cartItemsContainer = document.getElementById("cartItems");
-const cartProductsInput = document.getElementById("cartProducts");
-const deliveryFeeElement = document.getElementById("deliveryFee");
-
-// Fonction pour mettre à jour le panier
-function updateCart() {
-    cartCount.textContent = cart.length;
-    cartItemsContainer.innerHTML = '';
-    let total = 0;
-    const productList = [];
-
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.innerHTML = `<p>${item.name} - ${item.price.toFixed(2)}€ <button onclick="removeFromCart(${index})">Supprimer</button></p>`;
-        cartItemsContainer.appendChild(cartItem);
-        total += item.price;
-        productList.push(`${item.name} (${item.price.toFixed(2)}€)`);
-    });
-
-    // Mettre à jour le total
-    cartTotal.textContent = total.toFixed(2) + "€";
-    cartProductsInput.value = productList.join(', '); // Sérialiser les produits pour Formspree
-    
-    // Calculer les frais de livraison
-    let deliveryFee = 5; // Valeur par défaut
-    if (total >= 45) {
-        deliveryFee = 0; // Livraison gratuite
-    } else if (total >= 30) {
-        deliveryFee = 1.50; // 1.50€ pour les commandes entre 30 et 45€
-    } else if (total >= 20) {
-        deliveryFee = 2; // 2€ pour les commandes entre 20 et 30€
-    } else if (total >= 10) {
-        deliveryFee = 2.50; // 2.50€ pour les commandes entre 10 et 20€
-    } else {
-        deliveryFee = 5; // 5€ pour les commandes en dessous de 10€
-    }
-
-    deliveryFeeElement.textContent = deliveryFee.toFixed(2) + "€"; // Affiche les frais de livraison
-}
-
-// Fonction pour ajouter un article au panier
-function addToCart(name, price) {
-    cart.push({ name, price });
-    updateCart();
-}
-
-// Fonction pour supprimer un article du panier
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
-// Écouteurs d'événements pour ajouter des articles au panier
-document.querySelectorAll(".addToCart").forEach(button => {
-    button.addEventListener("click", () => {
-        const name = button.getAttribute("data-name");
-        const price = parseFloat(button.getAttribute("data-price"));
-        addToCart(name, price);
-    });
-});
-
-// Modal ouverture/fermeture
-cartButton.addEventListener("click", () => {
-    cartModal.style.display = "block";
-});
-
-checkoutButton.addEventListener("click", () => {
-    const total = cart.reduce((sum, item) => sum + item.price, 0); // Calculer le total du panier
-
-    // Alerte d'information sur les frais de livraison
-    if (total < 45) {
-        alert("La livraison est gratuite pour les commandes de 45€ et plus. Vos frais de livraison seront de " + deliveryFeeElement.textContent);
-    }
-
-    // Afficher le modal de commande
-    cartModal.style.display = "none";
-    checkoutModal.style.display = "block";
-});
-
-// Fermeture des modals
-closeModalButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        cartModal.style.display = "none";
-        checkoutModal.style.display = "none";
-    });
-});
-
-window.onclick = function(event) {
-    if (event.target == cartModal) {
-        cartModal.style.display = "none";
-    }
-    if (event.target == checkoutModal) {
-        checkoutModal.style.display = "none";
-    }
-}
-
-// Changement de sections
-document.querySelectorAll('.categoryButton').forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        document.querySelectorAll('.product-section').forEach(section => {
-            section.style.display = 'none';
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productSelect = this.previousElementSibling;
+                const selectedValue = productSelect.value;
+                const [product, price] = selectedValue.split(' - ');
+                const numericPrice = parseFloat(price.replace('€', '').trim());
+                addToCart(product, numericPrice);
+            });
         });
-        document.getElementById(category).style.display = 'block';
-    });
-});
 
-// Par défaut, afficher la section Boissons
-document.getElementById('boissons').style.display = 'block';
-
-
-// Recherche de produits
-const produits = [
-    { 
-        nom: 'Smartphone XYZ', 
-        description: 'Un smartphone haut de gamme avec un écran de 6,5 pouces et un appareil photo de 108MP.', 
-        price: 500, 
-        image: 'https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/132791e2-5766-0ef2-ad80-e9bd8c096a51.jpeg' 
-    },
-    { 
-        nom: 'Laptop Pro 15', 
-        description: 'Un ordinateur portable puissant pour les professionnels, avec un processeur Intel i9 et 32GB RAM.', 
-        price: 1500, 
-        image: 'https://via.placeholder.com/150x150?text=Laptop+Pro+15' 
-    },
-    { 
-        nom: 'Casque Bluetooth HD', 
-        description: 'Un casque sans fil avec une autonomie de 30 heures et un son haute définition.', 
-        price: 150, 
-        image: 'https://via.placeholder.com/150x150?text=Casque+Bluetooth+HD' 
-    },
-    { 
-        nom: 'Montre Connectée X200', 
-        description: 'Une montre connectée avec suivi de la santé, GPS intégré et notification intelligente.', 
-        price: 200, 
-        image: 'https://via.placeholder.com/150x150?text=Montre+Connect%C3%A9e+X200' 
-    }
-];
-
-// Fonction pour rechercher et afficher les produits
-function searchProducts() {
-    let query = document.getElementById('search-bar').value.toLowerCase();
-    let resultsContainer = document.getElementById('search-results');
-    
-    // Vide les résultats précédents
-    resultsContainer.innerHTML = '';
-
-    // Recherche dans les produits
-    let filteredProducts = produits.filter(function(produit) {
-        return produit.nom.toLowerCase().includes(query);
-    });
-
-    // Affiche les produits correspondants
-    if (filteredProducts.length > 0) {
-        filteredProducts.forEach(function(produit) {
-            let produitElement = document.createElement('div');
-            produitElement.innerHTML = `
-                <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                    <img src="${produit.image}" alt="${produit.nom}" style="width: 150px; height: 150px; margin-right: 20px;">
-                    <div>
-                        <h3>${produit.nom}</h3>
-                        <p>${produit.description}</p>
-                        <p>${produit.price.toFixed(2)}€</p>
-                        <button onclick="addToCart('${produit.nom}', ${produit.price})">Ajouter au panier</button>
-                    </div>
-                </div>
-            `;
-            produitElement.style.borderBottom = '1px solid #ccc';
-            produitElement.style.padding = '10px 0';
-            resultsContainer.appendChild(produitElement);
+        document.getElementById("floatingCartBtn").addEventListener("click", function() {
+            cartModal.style.display = "flex"; // Affiche la modale
         });
-    } else {
-        resultsContainer.innerHTML = '<p>Aucun produit trouvé</p>';
-    }
-}
 
+        document.querySelector(".close-btn").addEventListener("click", function() {
+            cartModal.style.display = "none"; // Cache la modale
+        });
 
+        window.addEventListener("click", function(event) {
+            if (event.target === cartModal) {
+                cartModal.style.display = "none"; // Cache la modale si on clique en dehors
+            }
+        });
 
+        // Fonction pour soumettre la commande
+        function submitOrder() {
+            const orderDetails = cart.map(item => `${item.product} - ${item.price.toFixed(2)}€`).join('\n');
+            const total = totalPrice.toFixed(2);
+            const orderMessage = `Nouvelle commande:\n\n${orderDetails}\nTotal: ${total}€`;
 
+            // Envoi de la commande via Formspree
+            fetch('https://formspree.io/f/xkgnwdzb', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: orderMessage })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Affiche une notification de succès
+                    notification.textContent = 'Commande réussie !'; // Met à jour le message de notification
+                    notification.style.display = 'block'; // Affiche la notification
+                    setTimeout(() => notification.style.display = 'none', 3000);
+                    // Réinitialise le panier
+                    cart = [];
+                    totalPrice = 0;
+                    updateCartDisplay();
+                } else {
+                    alert('Erreur lors de l\'envoi de la commande. Veuillez réessayer.');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                alert('Erreur lors de l\'envoi de la commande. Veuillez réessayer.');
+            });
+        }
 
+        // Ajouter l'événement pour le bouton de soumission
+        document.getElementById("submitOrder").addEventListener("click", submitOrder);
 
-function updateOpeningHours() {
-    const now = new Date();
-    const openHour = 20; // 20h
-    const closeHour = 5; // 5h (le lendemain)
-    const currentHour = now.getHours();
-    const messageElement = document.getElementById("openingHours");
+        // Fonction pour afficher ou masquer les produits exclusifs
+        function toggleExclusiveProducts() {
+            const exclusiveSection = document.getElementById("exclusiveProducts");
+            const defaultSection = document.getElementById("defaultProducts");
 
-    // Vérifie si le magasin est ouvert
-    if (currentHour >= openHour || currentHour < closeHour) {
-        messageElement.className = "opening-hours open";
-        messageElement.innerHTML = "Ouvert aujourd'hui: 20h - 5h";
-    } else {
-        messageElement.className = "opening-hours closed";
-        messageElement.innerHTML = "Fermé";
-    }
+            if (exclusiveSection.classList.contains("hidden")) {
+                exclusiveSection.classList.remove("hidden");
+                defaultSection.classList.add("hidden");
+                toggleExclusiveBtn.style.display = "none"; // Cacher le bouton d'affichage
+                homeBtn.style.display = "inline-block"; // Afficher le bouton retour
+            } else {
+                exclusiveSection.classList.add("hidden");
+                defaultSection.classList.remove("hidden");
+                toggleExclusiveBtn.style.display = "inline-block"; // Afficher le bouton d'affichage
+                homeBtn.style.display = "none"; // Cacher le bouton retour
+            }
+        }
 
-    // Vérifie si le magasin est bientôt fermé
-    if (currentHour === 4 || (currentHour === 5 && now.getMinutes() <= 30)) {
-        messageElement.innerHTML = "Le magasin ferme bientôt, n'attendez pas !"; // Nouveau message
-        messageElement.className = "opening-hours closed";
-    }
-}
+        // Ajouter un événement pour le bouton d'affichage des produits exclusifs
+        toggleExclusiveBtn.addEventListener("click", toggleExclusiveProducts);
 
-// Met à jour l'état d'ouverture dès que la page se charge
-window.onload = updateOpeningHours;
-</script>
-<script>
+        // Ajouter un événement pour le bouton retour à l'accueil
+        homeBtn.addEventListener("click", function() {
+            const exclusiveSection = document.getElementById("exclusiveProducts");
+            const defaultSection = document.getElementById("defaultProducts");
+            exclusiveSection.classList.add("hidden"); // Cacher la section exclusive
+            defaultSection.classList.remove("hidden"); // Afficher la section par défaut
+            toggleExclusiveBtn.style.display = "inline-block"; // Afficher le bouton d'affichage
+            homeBtn.style.display = "none"; // Cacher le bouton retour
+        });
 
+        // Fonction pour afficher la notification
+        function showNotification(message) {
+            notification.textContent = message; // Met à jour le message de notification
+            notification.style.display = 'block'; // Affiche la notification
+            setTimeout(() => {
+                notification.style.display = 'none'; // Cache la notification après 3 secondes
+            }, 3000);
+        }
 
-
-
-
-// Fonction pour défiler jusqu'à la section de la catégorie
-function scrollToCategorySection(category) {
-    const section = document.getElementById(category);
     
-    if (section) {
-        // Faire défiler jusqu'au début de la section entière (y compris le titre)
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-
-// Modification de la fonction de changement de section
-document.querySelectorAll('.categoryButton').forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
+ 
         
-        // Masquer toutes les sections de produit
-        document.querySelectorAll('.product-section').forEach(section => {
-            section.style.display = 'none';
-        });
-
-        // Afficher la section de la catégorie sélectionnée
-        document.getElementById(category).style.display = 'block';
-
-        // Appeler la fonction pour faire défiler vers le début de la section
-        scrollToCategorySection(category);
+// Fonction pour ouvrir la modale avec l'image agrandie
+document.querySelectorAll('.product-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = this.src; // Changez la source de l'image modale
+        modal.style.display = 'flex'; // Affichez la modale
     });
 });
-</script>
-</body>
 
-</html>
+// Fermer la modale en cliquant à l'extérieur de l'image
+document.getElementById('imageModal').addEventListener('click', function(event) {
+    if (event.target !== this) return; // Ignorez les clics sur l'image
+    this.style.display = 'none'; // Cachez la modale
+});
+    </script>
+</body>
+             </html>
