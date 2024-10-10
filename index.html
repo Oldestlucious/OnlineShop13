@@ -174,10 +174,127 @@
     </style>
 </head>
 <body>
+
+
+
+<!-- Flèche pour afficher la bannière -->
+<div id="showBannerBtn" class="show-banner-btn" onclick="showBanner()">▶️</div>
+
+<!-- Bannière promo futuriste -->
+<div id="promoBanner" class="promo-banner hidden" onclick="closeBanner(event)">
+    <div class="banner-content">
+        <h2>🌟 NOUVEL ARRIVAGE 🌟</h2>
+        <p>🟡 <strong>JAUNE MOUSSEUX</strong></p>
+        <p>💥 <strong>HASH FILTRE PREMIUM</strong></p>
+        <p>📦 <strong>100G "Kinder Bueno"*</strong> passe à <span class="price">230$</span> (meetup), passe à <span class="price">240$</span> (livraison)</p>
+        <p>🤣 On laisse la concu par terre avec leur tof à <span class="price">270€</span></p>
+        <p>⚡ Stock illimité !</p>
+        <p>☕ COFFEE DE MR LE DRUIDE "LA SAVINE" - Promo du jour : <span class="price">19€ le litre</span></p>
+        <p>🔥 On vide le stock !!!</p>
+        <button class="close-btn" onclick="closeBanner(event)">❌</button> <!-- Bouton de fermeture -->
+    </div>
+</div>
+
+<!-- CSS pour styliser la bannière et la flèche -->
+<style>
+    .promo-banner {
+        background-color: #2e2e2e;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 10px;
+        width: 320px;
+        position: fixed;
+        top: 20px;
+        right: 20px; /* Position de la bannière à droite */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        font-family: 'Arial', sans-serif;
+        font-size: 0.9rem;
+        text-align: left;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        opacity: 0.9;
+    }
+
+    .hidden {
+        display: none; /* Cacher la bannière par défaut */
+    }
+
+    .banner-content {
+        margin: 0;
+    }
+
+    .promo-banner h2 {
+        font-size: 1.2rem;
+        color: #ffeb3b; /* Jaune futuriste */
+        margin: 0 0 5px;
+    }
+
+    .promo-banner p {
+        margin: 3px 0;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #81d4fa; /* Couleur pour les prix */
+    }
+
+    .show-banner-btn {
+        position: fixed;
+        top: 20px;
+        right: 0; /* Position de la flèche à droite de la page */
+        background-color: transparent;
+        border: none;
+        font-size: 2rem; /* Taille de la flèche */
+        color: #4caf50; /* Couleur de la flèche */
+        cursor: pointer;
+        z-index: 1000;
+        transition: color 0.3s;
+    }
+
+    .show-banner-btn:hover {
+        color: #45a049; /* Changement de couleur au survol */
+    }
+
+    .close-btn {
+        background: transparent;
+        border: none;
+        color: #ff6b6b; /* Couleur de la croix */
+        font-size: 1.2rem; /* Taille de la croix */
+        cursor: pointer;
+        position: absolute; /* Positionner la croix */
+        bottom: 10px; /* À 10px du bas */
+        right: 10px; /* À 10px de la droite */
+    }
+
+    .close-btn:hover {
+        color: #ff3b3b; /* Changement de couleur au survol */
+    }
+</style>
+
+<!-- JavaScript pour fermer et afficher la bannière -->
+<script>
+    function closeBanner(event) {
+        // Ferme la bannière uniquement si on clique en dehors du contenu de la bannière ou sur la croix
+        if (event.target === document.getElementById('promoBanner') || event.target.classList.contains('close-btn')) {
+            document.getElementById('promoBanner').classList.add('hidden');
+        }
+    }
+
+    function showBanner() {
+        document.getElementById('promoBanner').classList.remove('hidden');
+    }
+
+    // Afficher la bannière automatiquement après 3 secondes
+    window.onload = function() {
+        setTimeout(showBanner, 3000); // Affiche la bannière après 3 secondes
+    };
+</script>
+
+
+
+
+
 <section class="product-section">
-
-
-
 <h1 id="shopTitle">Menu Shop Coffee Savine</h1>
 <button id="toggleExclusiveBtn" class="toggle-section-btn">COFFEE</button>
 <button id="homeBtn" class="toggle-section-btn">Retour à l'Accueil</button>
