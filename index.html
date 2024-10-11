@@ -171,6 +171,61 @@
     max-height: 80%; /* hauteur maximum de l'image */
     border-radius: 10px; /* coins arrondis pour l'image */
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Styles généraux pour le mode sombre */
+body.dark-mode {
+    background-color: #111;
+    color: #e0e0e0;
+}
+
+h1.dark-mode {
+    background-color: #333;
+    color: #FFD700; /* Or vif */
+}
+
+.dark-mode .product {
+    background-color: #1a1a1a;
+    border: 2px solid #444;
+    color: #ddd;
+}
+
+.dark-mode-btn {
+    padding: 10px 20px;
+    background-color: #444;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+    background-color: #666;
+}
+
+.dark-mode .add-to-cart {
+    background-color: #FFD700;
+    color: black;
+}
+
+.dark-mode .promo-banner {
+    background-color: #333;
+    color: #FFD700;
+}
+
+.dark-mode .price {
+    color: #FF4500; /* Orange vif pour les prix */
+}
     </style>
 </head>
 <body>
@@ -269,6 +324,13 @@
     .close-btn:hover {
         color: #ff3b3b; /* Changement de couleur au survol */
     }
+    
+            #about-content {
+            font-size: 14px;
+        }  
+        .a2a_button_snapchat {
+            background-color: yellow;
+        }
 </style>
 
 <!-- JavaScript pour fermer et afficher la bannière -->
@@ -291,16 +353,14 @@
 </script>
 
 
-
-
-
 <section class="product-section">
 <h1 id="shopTitle">Menu Shop Coffee Savine</h1>
 <button id="toggleExclusiveBtn" class="toggle-section-btn">COFFEE</button>
 <button id="homeBtn" class="toggle-section-btn">Retour à l'Accueil</button>
+
+<button id="darkModeToggle" class="dark-mode-btn">🖤 Mode Sombre</button>
 <div id="defaultProducts" class="product-list">
-    
-    <!-- CANETTE 3€ -->
+       <!-- CANETTE 3€ -->
     <div class="product">
         <h3>CANETTE 3€</h3>
         <p>Coca, Oasis, Fanta, Ice Tea</p>
@@ -534,6 +594,33 @@
         Produit ajouté au panier !
     </div>
 
+ <div id="social-sharing">
+        <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+            <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/coffee-savine/"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        </div>
+    </div>
+
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+    <script>
+        var socialSharing = document.getElementById('social-sharing');
+        var lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            var st = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (st > lastScrollTop) {
+                socialSharing.style.display = 'none'; // Masquer le code en descendant
+            } else {
+                socialSharing.style.display = 'block'; // Afficher le code en montant
+            }
+
+            lastScrollTop = st;
+        });
+</script>
     <script>
         let cart = [];
         let totalPrice = 0;
@@ -680,6 +767,17 @@ document.getElementById('imageModal').addEventListener('click', function(event) 
     if (event.target !== this) return; // Ignorez les clics sur l'image
     this.style.display = 'none'; // Cachez la modale
 });
+
+
+
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    const elements = document.querySelectorAll('h1, .promo-banner, .product, .add-to-cart');
+    elements.forEach(el => el.classList.toggle('dark-mode'));
+});
+
+
+
     </script>
 </body>
 </html>
