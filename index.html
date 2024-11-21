@@ -1,1073 +1,491 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
- <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Online Shop" />
-    <meta property="og:description" content="Pour les hiboux du soir ." />
-    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/7bb48d53-63dc-b713-a452-f3160a601031.jpg" />
-    <meta property="og:url" content="https://oldestlucious.github.io/Online_Shop13/" />
-    <meta property="og:type" content="website" />
+    <!-- Meta essentielles -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En Ligne Shop</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Titre -->
+    <title>SK'SMILE - Blanchiment Dentaire Professionnel</title>
+
+    <!-- Description SEO -->
+    <meta name="description" content="SK'SMILE propose des services professionnels de blanchiment dentaire pour un sourire éclatant. Découvrez nos solutions adaptées pour une hygiène bucco-dentaire parfaite.">
+
+    <!-- Mots-clés SEO -->
+    <meta name="keywords" content="SK'SMILE, blanchiment dentaire, sourire éclatant, hygiène dentaire, soins dentaires, esthétique, santé bucco-dentaire, soins professionnels">
+
+    <!-- Auteur -->
+    <meta name="author" content="SK'SMILE">
+
+    <!-- Open Graph (pour les réseaux sociaux comme Facebook) -->
+    <meta property="og:title" content="SK'SMILE - Blanchiment Dentaire Professionnel">
+    <meta property="og:description" content="Un sourire éclatant grâce aux services professionnels de SK'SMILE. Découvrez des solutions adaptées pour vos besoins dentaires.">
+    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/133ec773-385a-f8f3-494f-f41cade0b1d2.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card (pour les partages Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SK'SMILE - Blanchiment Dentaire Professionnel">
+    <meta name="twitter:description" content="SK'SMILE propose des services professionnels de blanchiment dentaire pour un sourire éclatant.">
+    <meta name="twitter:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1ff11e67-c9be-e703-0346-ee1cf04b41c5.jpg">
+
+    <!-- Icône de site (favicon) -->
+    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1ff11e67-c9be-e703-0346-ee1cf04b41c5.jpg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1ff11e67-c9be-e703-0346-ee1cf04b41c5.jpg">
+
+    <!-- Ajouter Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Fonts Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
-  <style>
-/* Importation de la police */
-@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-/* Général */
-body {
-    font-family: 'Protest Guerrilla', sans-serif;
-    background-color: #f7f8fa; /* Un blanc doux pour un effet propre et agréable */
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="styles.css">
 
-h1, h2, h3 {
-    color: #333;
-    font-weight: bold;
-}
+ <style>
+        /* Style global */
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
 
-h1 {
-    font-size: 2.2rem; /* Taille légèrement réduite pour un rendu plus équilibré */
-    text-align: center;
-    margin-top: 20px;
-    color: #2c3e50;
-}
+       
 
-h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: #007c89; /* Accent color (vert doux pour les titres) */
-}
-
-h3 {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-    color: #2c3e50;
-}
-
-p {
-    color: #666;
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
-button {
-    font-family: 'Protest Guerrilla', sans-serif;
-    background-color: #007c89;
+       /* Style pour l'en-tête */
+header {
+    background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1ff11e67-c9be-e703-0346-ee1cf04b41c5.jpg');
+    background-size: cover;
+    background-position: center;
     color: white;
-    border: none;
-    padding: 8px 18px; /* Taille de bouton plus petite pour un aspect propre */
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    font-size: 1rem;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
 }
 
-button:hover {
-    background-color: #005f6a;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Titre SK'SMILE avec une ombre */
+header h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    
+    z-index: 2;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* Ombre discrète mais visible pour le titre */
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
+/* Bordure et ombre autour de la description */
+header p {
+    font-size: 1.5em;
+    margin-top: 10px;  /* Ajout d'un espace au-dessus de la description */
     margin-bottom: 20px;
-    padding: 10px 0;
+    
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour améliorer la lisibilité */
+    padding: 15px 25px; /* Padding pour espacer le texte des bords */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6); /* Ombre douce mais visible autour du texte */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Ombre subtile autour du texte */
 }
+     
 
-.categoryButton {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #007c89;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 
-.categoryButton:hover {
-    background-color: #005f6a;
-}
 
-#cartButton {
-    position: fixed;
-    top: 654px;
-    right: 20px;
-    background-color: #007c89;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s;
-}
 
-#cartButton:hover {
-    background-color: #005f6a;
-}
 
-/* Section produits */
-.product-section {
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #333;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+/* Section Contact */
+section {
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.product {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 15px;
+    margin: 60px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-family: 'Merriweather', serif;
+    position: relative;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 220px;
-    transition: transform 0.3s ease;
 }
 
-.product:hover {
-    transform: translateY(-5px);
+/* Titre de la section */
+section h2 {
+    font-size: 32px;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
 }
 
-.product img {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease;
+/* Liste des informations de contact */
+section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    font-size: 18px;
 }
 
-.product:hover img {
-    transform: scale(1.05);
-}
-
-.addToCart {
-    background-color: #007c89;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.addToCart:hover {
-    background-color: #005f6a;
-}
-
-/* Description */
-.description {
-    background-color: #fff;
+/* Élément de la liste de contact */
+section ul li {
+    position: relative;
     padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparence de fond */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px); /* Effet de flou arrière-plan */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.description h2 {
-    font-size: 1.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #2c3e50;
+/* Icônes pour chaque méthode de contact */
+section ul li i {
+    margin-right: 20px;
+    font-size: 22px;
+    color: #FFD700; /* Couleur dorée */
 }
 
-.description p {
-    font-size: 1rem;
-    color: #555;
+/* Effet de survol pour les éléments de la liste */
+section ul li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Modal Panier */
-.modal {
-    display: none;
+/* Style futuriste pour les liens */
+section ul li strong {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+/* Effet de texte lumineux futuriste */
+section ul li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FFD700, #FF6347);
+    animation: glow 2s infinite alternate;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+@keyframes glow {
+    0% {
+        transform: scaleX(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scaleX(1.1);
+        opacity: 1;
+    }
+}
+
+/* Adapte la grille pour les petits écrans */
+@media (max-width: 768px) {
+    section ul {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+    }
+}
+
+section ul li i.fa-snapchat {
+    color: #FFFC00; /* Jaune Snapchat */
+}
+  section ul li i.fa-whatsapp {
+    color: #25D366; /* Vert WhatsApp */
+}
+  section ul li i.fa-instagram {
+    color: #E4405F; /* Rose Instagram */
+}
+
+
+
+
+/* Pop-up Formulaire */
+.form-popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
-/* Contenu du modal avec effet de scroll */
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    width: 90%;
-    max-width: 600px; /* Largeur maximale du panier */
-    max-height: 80%; /* Hauteur maximale du contenu pour déclencher le scroll */
-    overflow-y: auto; /* Activer le scroll vertical si le contenu dépasse la hauteur */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet visuel */
-    position: relative;
-}
-
-
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content h2 {
-    margin-top: 0;
-    color: #007c89;
-}
-
-#cartItems {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Formulaire de commande */
-form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-form input, form select {
-    width: 50%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 15px;
-}
-
-form button {
-    width: 80%;
-    padding: 12px;
-    background-color: #007c89;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-form button:hover {
-    background-color: #005f6a;
-}
-
-#checkoutButton {
-    background-color: #28a745;
-    margin-top: 20px;
-}
-
-#checkoutButton:hover {
-    background-color: #218838;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    nav {
-        flex-wrap: wrap;
-    }
-
-    .product {
-        width: 100%;
-        max-width: 320px;
-    }
-}
-
-.opening-hours {
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    z-index: 1000;
-}
-
-.opening-hours.open {
-    color: #4caf50; /* Vert pour ouvert */
-    right: 20px; /* Positionné à droite */
-    top: 56px; /* Positionné en haut */
-}
-
-.opening-hours.closed {
-    color: #f44336; /* Rouge pour fermé */
-    left: 50px; /* Positionné à gauche */
-    top: 20px; /* Positionné en haut */
-}
-
-#closeHours {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 1.5rem;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-
-#closeHours {
-    color: #000; /* Couleur par défaut */
-    transition: color 0.3s ease, transform 0.3s ease; /* Transition pour la couleur et le déplacement */
-}
-
-#closeHours:hover {
-    color: #ff0000; /* Change la couleur en rouge */
-    transform: translateY(5px); /* Déplace l'élément de 5 pixels vers le bas */
-}
-.opening-hours.closed {
-    color: #ff0000; /* Assurez-vous que le texte reste rouge lorsque le magasin est fermé */
-}
-
-
-
-
-
-.search-container {
-    margin: 20px;
-    text-align: center;
-}
-
-#search-bar {
-    padding: 10px;
-    width: 80%;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-}
-
-#search-results {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-}
-
-
-
-.rating {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.stars {
-    color: purple; /* Couleur des étoiles */
-    font-size: 18px; /* Taille des étoiles */
-}
-
-.comments {
-    margin-top: 5px;
-    max-height: 100px; /* Hauteur maximale pour le conteneur des commentaires */
-    overflow-y: auto; /* Scroll vertical si trop de commentaires */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #f9f9f9;
-}
-
-.comment-input {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.submit-comment {
-    width: 100%;
-    margin-top: 5px;
-}
-
-.comment-input::placeholder {
-    color: #aaa; /* Couleur du placeholder */
-}
-
-
-
-
-
-
-
-/* Style du contenu de la modale pour carte bleue */
-.card-modal-content {
+.form-popup-content {
+    background: #111;
     padding: 30px;
-    background: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Logos Visa et Mastercard */
-.card-logos {
-    display: flex;
-    justify-content: center;
+.form-popup-content h2 {
+    color: #FFD700;
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
-.card-logos img {
-    margin: 0 10px;
-    width: 60px;
-}
-
-/* Style des champs du formulaire */
-#cardInfoForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#cardInfoForm label {
-    font-size: 1.1em;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-#cardInfoForm input {
-    padding: 12px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 85%;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-#cardInfoForm input:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-#cardInfoForm input::placeholder {
-    color: #999;
-    font-size: 0.9em;
-}
-
-/* Style du bouton de validation */
-.btn-submit {
-    background-color: #4CAF50;
+.form-popup-content input,
+.form-popup-content select,
+.form-popup-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 2px solid #FFD700;
+    background-color: #333;
     color: white;
-    padding: 14px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-popup-content button {
+    background-color: #FFD700;
+    color: #111;
+    padding: 12px 25px;
+    font-size: 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1.1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
-    background-color: #45a049;
+.form-popup-content button:hover {
+    background-color: #FFB700;
 }
+
+.form-popup-content button[type="button"] {
+    background-color: #333;
+    color: #FFD700;
+}
+
+.form-popup-content button[type="button"]:hover {
+    background-color: #111;
+}
+    
+  
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #00EEEE, #FFB6C1); /* Bleu ciel et rose clair */
+    color: #111; /* Texte noir pour un bon contraste */
+    margin-top: 30px;
+    font-family: 'Merriweather', serif;
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Ombre légère pour délimiter */
+}
+
+/* Texte du footer */
+footer p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #111; /* Texte en noir pour un bon contraste */
+}
+
+/* Pour rendre le texte bien lisible et visible */
+footer p strong {
+    font-weight: bold;
+}
+
+
+        /* Formulaire Pop-up */
+        .form-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-popup-content {
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-popup-content h2 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-popup-content input,
+        .form-popup-content select,
+        .form-popup-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 2px solid #FFD700;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-popup-content button {
+            background-color: #FFD700;
+            color: #111;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .form-popup-content button:hover {
+            background-color: #FFB700;
+        }
+
+        .form-popup-content button[type="button"] {
+            background-color: #333;
+            color: #FFD700;
+        }
+
+        .form-popup-content button[type="button"]:hover {
+            background-color: #111;
+        }
+
+    
+       #about-content {
+            font-size: 14px;
+        }  
+        .a2a_button_snapchat {
+            background-color: yellow;
+        }
     </style>
 </head>
-
 <body>
+
+    <!-- En-tête -->
     <header>
-        <h1>En Ligne Shop</h1>
-   <div id="openingHours" class="opening-hours"></div>
-        <!-- Description et navigation -->
-  
-
-<div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGR8YVkFKI/KlPvtSEu9m_M5J9FCp1nwA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGR8YVkFKI&#x2F;KlPvtSEu9m_M5J9FCp1nwA&#x2F;view?utm_content=DAGR8YVkFKI&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a>
-
-
-
-        <button id="cartButton">Voir le panier (<span id="cartCount">0</span>)</button>
+        <h1>SK'SMILE</h1>
+        <p>Blanchiment Dentaire Professionnel Homme/Femme</p>
     </header>
-<section class="description">
-    <h2>
-        À propos de nous 
-        <span id="toggleDescription" style="cursor: pointer;">▼</span>
-    </h2>
-    <p id="descriptionText" style="display: none;">
-        Bienvenue sur notre site ! Vous pouvez planifier votre commande pour une livraison entre 21h et 5h30 du matin. Passez votre commande à partir de 20h et choisissez le créneau qui vous convient le mieux.
-    </p>
+
+    <!-- Section Services -->
+    <section>
+        <h2>Nos Services</h2>
+        <ul>
+            <li><strong>Solo :</strong> 50€ par personne <button onclick="openForm()">Prendre RDV</button></li>
+            <li><strong>Duo :</strong> 90€ (45€ par personne) <button onclick="openForm()">Prendre RDV</button></li>
+            <li><strong>Trio :</strong> 120€ (40€ par personne) <button onclick="openForm()">Prendre RDV</button></li>
+        </ul>
+    </section>
+
+   <!-- Section Contact -->
+<section>
+    <h2>Contactez-nous</h2>
+    <ul>
+        <li><strong>Disponible :</strong> Tous les jours de 9h à 1h du matin</li>
+        <li><i class="fab fa-snapchat"></i><strong>Snapchat :</strong> amelll_9</li>
+        <li><i class="fab fa-whatsapp"></i><strong>WhatsApp :</strong> 0695957665 / 0782976726</li>
+        <li><i class="fab fa-instagram"></i><strong>Instagram :</strong> sksmile95</li>
+    </ul>
 </section>
 
-<script>
-    const toggleButton = document.getElementById('toggleDescription');
-    const descriptionText = document.getElementById('descriptionText');
+    <!-- Formulaire de Rendez-vous -->
+    <div id="form-popup" class="form-popup">
+        <div class="form-popup-content">
+            <h2>Prendre Rendez-vous</h2>
+            <form action="https://formspree.io/f/xxxxxx" method="POST">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
 
-    toggleButton.addEventListener('click', () => {
-        if (descriptionText.style.display === 'none') {
-            descriptionText.style.display = 'block';
-            toggleButton.textContent = '▲'; // Flèche vers le haut
-        } else {
-            descriptionText.style.display = 'none';
-            toggleButton.textContent = '▼'; // Flèche vers le bas
-        }
-    });
-</script>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
 
-<nav>
-  
-    <button class="categoryButton" data-category="boissons">Boissons</button>
-    <button class="categoryButton" data-category="gourmandises">Gourmandises</button>
-    <button class="categoryButton" data-category="creme-de-luxe">Crème de Luxe</button>
-    <button class="categoryButton" data-category="cigarettes-electroniques">Cigarettes Électroniques</button>
-    <button class="categoryButton" data-category="epicerie">Épicerie</button>
-</nav>
-<div class="search-container">
-    <input type="text" id="search-bar" placeholder="Rechercher un produit..." oninput="searchProducts()" onfocus="scrollToSearch()" />
-</div>
-<!-- Conteneur pour afficher les résultats de la recherche -->
-<div id="search-results"></div>
-<main>
-    <section id="boissons" class="product-section">
-        <h2>Boissons</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2445985e-f18c-ec53-0449-0bdae8bc83c9.jpeg" alt="Coca Canette" class="zoom">
-                <h3>Coca Canette</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Coca Canette" data-price="2">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-coca-canette">"Une boisson rafraîchissante!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-coca-canette">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b22a5eb2-a13a-e573-b0b8-198d59dbb24c.jpeg" alt="Coca Chérie" class="zoom">
-                <h3>Coca Cherry</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Coca Chérie" data-price="2">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-coca-cherry">"Délicieux avec un goût unique!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-coca-cherry">Soumettre</button>
-            </div>
-            <!-- Ajoutez d'autres produits de manière similaire ici -->
+                <label for="phone">Numéro de téléphone :</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <label for="service">Sélectionner un service :</label>
+                <select id="service" name="service" required>
+                    <option value="Solo">Solo : 50€ par personne</option>
+                    <option value="Duo">Duo : 90€ (45€ par personne)</option>
+                    <option value="Trio">Trio : 120€ (40€ par personne)</option>
+                </select>
+
+                <label for="date">Date souhaitée :</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (optionnel) :</label>
+                <textarea id="message" name="message"></textarea>
+
+                <button type="submit">Envoyer la demande</button>
+             <button type="button" onclick="closeForm()">Fermer</button>
+            </form>
         </div>
-    </section>
-
-    <section id="gourmandises" class="product-section">
-        <h2>Gourmandises</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b4a07335-f3b5-5581-d2df-2054ef535ac9.jpeg" alt="Milka Choco" class="zoom">
-                <h3>Kinder Bueno</h3>
-                <p>Prix: 2€</p>
-                <button class="addToCart" data-name="Milka Choco" data-price="4">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-kinder-bueno">"Un délice irrésistible!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-kinder-bueno">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c7e5153a-41d1-e806-31f6-e3874686f874.jpeg" alt="Savane" class="zoom">
-                <h3>Savane (310g)</h3>
-                <p>Prix: 4.70€</p>
-                <button class="addToCart" data-name="Savane" data-price="4.70">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-savane">"Parfait avec le café!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-savane">Soumettre</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="creme-de-luxe" class="product-section">
-        <h2>Creme deluxe</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/074cf10a-4517-2a0e-1d27-7a345df4718c.jpeg" alt="Fast Gaz" class="zoom">
-                <h3>Fast Gaz</h3>
-                <p>Prix: 25€ (Livraison incluse)</p>
-                <button class="addToCart" data-name="Fast Gaz" data-price="25">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-fast-gaz">"Un excellent produit!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-fast-gaz">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/17afab33-e69f-668e-069d-2c80767d90fe.jpeg" alt="Crème Luxe" class="zoom">
-                <h3>Creme deluxe</h3>
-                <p>Prix: 30€ (Livraison incluse)</p>
-                <button class="addToCart" data-name="Creme deluxe" data-price="30">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ★</span>
-                    <p class="comments" id="comments-creme-luxe">"Une qualité incroyable et merci 🫡🫡!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-creme-deluxe">Soumettre</button>
-            </div>
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/66fa677e-e0e4-48e5-cbb2-50aadfdac96b.jpeg" alt="Crème Hydratante" class="zoom">
-                <h3>Tank</h3>
-                <p>Prix: 45€</p>
-                <button class="addToCart" data-name="Tank" data-price="45">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ★</span>
-                    <p class="comments" id="comments-tank">"Marci pour la livraison rapide🤝👌 !"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-tank">Soumettre</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="cigarettes-electroniques" class="product-section">
-        <h2>Cigarettes Électroniques</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/53f25042-96e8-ae36-582e-e45407492068.jpeg" alt="Vape 9000 Lemon" class="zoom">
-                <h3>Vape 9000 Lemon</h3>
-                <p>Prix: 15€</p>
-                <button class="addToCart" data-name="Vape 9000 Lemon" data-price="15">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-vape-lemon">"Un goût frais!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-vape-lemon">Soumettre</button>
-            </div>
-            <div class="product">
-             <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6fea3d22-f935-2141-6f1f27072174.jpeg" alt="Vape 9000 Ice" class="zoom">
-                <h3>Vape 9000 Ice</h3>
-                <p>Prix: 15€</p>
-                <button class="addToCart" data-name="Vape 9000 Ice" data-price="15">Ajouter au panier</button>
-                <div class="rating">
-                    <span class="stars">★ ★ ★ ★ ☆</span>
-                    <p class="comments" id="comments-vape-ice">"Parfait pour l'été!"</p>
-                </div>
-                <input type="text" placeholder="Ajouter un commentaire" class="comment-input">
-                <button class="submit-comment" data-product="comments-vape-ice">Soumettre</button>
-            </div>
-        </div>
-    </section>
-</main>
-   <div id="cartModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Votre Panier</h2>
-        <div id="cartItems"></div>
-        <p>Total: <span id="cartTotal">0€</span></p>
-        <p>Frais de livraison: <span id="deliveryFee">5.00€</span></p>
-        <button id="checkoutButton">Finaliser la commande</button>
     </div>
-</div>
 
-<!-- Modale principale pour finaliser la commande -->
-<div id="checkoutModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Finaliser la commande</h2>
-        <form id="checkoutForm" action="https://formspree.io/f/mjkbqoaw" method="POST">
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="phone">Numéro de téléphone :</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="address">Adresse :</label>
-            <input type="text" id="address" name="address" required>
-
-            <label for="delivery">Mode de livraison :</label>
-            <select id="delivery" name="delivery" required>
-                <option value="retrait">Retrait en magasin</option>
-                <option value="livraison">Livraison à domicile</option>
-            </select>
-
-            <label for="deliveryTime">Choisissez l'heure de livraison :</label>
-            <select id="deliveryTime" name="deliveryTime" required>
-                <option value="21:00">21:00</option>
-                <option value="21:30">21:30</option>
-                <!-- Ajoute les autres options ici... -->
-            </select>
-
-            <label for="payment">Mode de paiement :</label>
-            <select id="payment" name="payment" required>
-                <option value="especes">Espèces</option>
-                <option value="carte" id="carteOption">Carte Bleue</option>
-            </select>
-
-            <input type="hidden" id="cartProducts" name="cartProducts">
-            <button type="submit">Envoyer la commande</button>
-        </form>
-    </div>
-</div>
-
-<!-- Modale pour les informations de carte bleue -->
-<div id="cardInfoModal" class="modal">
-    <div class="modal-content card-modal-content">
-        <span class="close-card-modal">&times;</span>
-        <h2>Informations de carte bancaire</h2>
-
-        <!-- Logos des cartes Visa et Mastercard -->
-        <div class="card-logos">
-            <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
-            <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard">
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 SK'SMILE - Blanchiment Dentaire. Tous droits réservés.</p>
+    </footer>
+ <div id="social-sharing">
+        <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+            <a class="a2a_button_snapchat" href=""></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
         </div>
-
-        <form id="cardInfoForm">
-            <label for="cardNumber">Numéro de carte :</label>
-            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
-
-            <label for="cardExpiry">Date d'expiration (MM/AA) :</label>
-            <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/AA" required>
-
-            <label for="cardCVV">CVV :</label>
-            <input type="text" id="cardCVV" name="cardCVV" placeholder="123" required>
-
-            <button type="submit" class="btn-submit">Valider le paiement</button>
-        </form>
     </div>
-</div>
 
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
 
-<script>
-
-// Récupérer la modale de carte bleue
-var cardInfoModal = document.getElementById("cardInfoModal");
-
-// Récupérer le bouton de fermeture de la modale de carte bleue
-var closeCardModal = document.querySelector(".close-card-modal");
-
-// Fermer la modale de carte bleue quand l'utilisateur clique sur la croix
-closeCardModal.onclick = function() {
-    cardInfoModal.style.display = "none";
-}
-
-// Récupérer le formulaire de commande
-var checkoutForm = document.getElementById("checkoutForm");
-
-// Récupérer le champ de sélection du mode de paiement
-var paymentSelect = document.getElementById("payment");
-
-// Fonction pour vérifier si tous les champs du formulaire sont remplis
-function isFormValid() {
-    return checkoutForm.checkValidity();
-}
-
-// Ajouter un événement pour écouter les changements dans le mode de paiement
-paymentSelect.addEventListener("change", function() {
-    // Si l'utilisateur sélectionne "Carte Bleue"
-    if (this.value === "carte") {
-        // Vérifier si le formulaire est bien rempli
-        if (isFormValid()) {
-            // Si tous les champs sont remplis, afficher la modale de carte bleue
-            cardInfoModal.style.display = "block";
-        } else {
-            // Sinon, avertir l'utilisateur et ne pas afficher la modale
-            alert("Veuillez remplir tous les champs obligatoires avant de choisir le mode de paiement 'Carte Bleue'.");
-        }
-    } else {
-        // Cacher la modale de carte bleue si un autre mode de paiement est sélectionné
-        cardInfoModal.style.display = "none";
-    }
-});
-</script> 
     <script>
-    
-    // Fonction pour faire défiler la page vers la barre de recherche
-function scrollToSearch() {
-    const searchBar = document.getElementById('search-bar');
-    searchBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+        var socialSharing = document.getElementById('social-sharing');
+        var lastScrollTop = 0;
 
+        window.addEventListener('scroll', function() {
+            var st = window.pageYOffset || document.documentElement.scrollTop;
 
+            if (st > lastScrollTop) {
+                socialSharing.style.display = 'none'; // Masquer le code en descendant
+            } else {
+                socialSharing.style.display = 'block'; // Afficher le code en montant
+            }
+            lastScrollTop = st;
+        });
+        </script>
 
+    <!-- Script pour gérer l'affichage du formulaire de réservation -->
+    <script>
+        // Fonction pour ouvrir le formulaire de réservation
+        function openForm() {
+            document.getElementById("form-popup").style.display = "flex";
+        }
 
-
+        // Fonction pour fermer le formulaire de réservation
+        function closeForm() {
+            document.getElementById("form-popup").style.display = "none";
+        }
     </script>
-<script>
-// Panier
-let cart = [];
-const cartModal = document.getElementById("cartModal");
-const checkoutModal = document.getElementById("checkoutModal");
-const cartButton = document.getElementById("cartButton");
-const checkoutButton = document.getElementById("checkoutButton");
-const closeModalButtons = document.querySelectorAll(".close");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-const cartItemsContainer = document.getElementById("cartItems");
-const cartProductsInput = document.getElementById("cartProducts");
-const deliveryFeeElement = document.getElementById("deliveryFee");
 
-// Fonction pour mettre à jour le panier
-function updateCart() {
-    cartCount.textContent = cart.length;
-    cartItemsContainer.innerHTML = '';
-    let total = 0;
-    const productList = [];
-
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.innerHTML = `<p>${item.name} - ${item.price.toFixed(2)}€ <button onclick="removeFromCart(${index})">Supprimer</button></p>`;
-        cartItemsContainer.appendChild(cartItem);
-        total += item.price;
-        productList.push(`${item.name} (${item.price.toFixed(2)}€)`);
-    });
-
-    // Mettre à jour le total
-    cartTotal.textContent = total.toFixed(2) + "€";
-    cartProductsInput.value = productList.join(', '); // Sérialiser les produits pour Formspree
-    
-    // Calculer les frais de livraison
-    let deliveryFee = 5; // Valeur par défaut
-    if (total >= 45) {
-        deliveryFee = 0; // Livraison gratuite
-    } else if (total >= 30) {
-        deliveryFee = 1.50; // 1.50€ pour les commandes entre 30 et 45€
-    } else if (total >= 20) {
-        deliveryFee = 2; // 2€ pour les commandes entre 20 et 30€
-    } else if (total >= 10) {
-        deliveryFee = 2.50; // 2.50€ pour les commandes entre 10 et 20€
-    } else {
-        deliveryFee = 5; // 5€ pour les commandes en dessous de 10€
-    }
-
-    deliveryFeeElement.textContent = deliveryFee.toFixed(2) + "€"; // Affiche les frais de livraison
-}
-
-// Fonction pour ajouter un article au panier
-function addToCart(name, price) {
-    cart.push({ name, price });
-    updateCart();
-}
-
-// Fonction pour supprimer un article du panier
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
-// Écouteurs d'événements pour ajouter des articles au panier
-document.querySelectorAll(".addToCart").forEach(button => {
-    button.addEventListener("click", () => {
-        const name = button.getAttribute("data-name");
-        const price = parseFloat(button.getAttribute("data-price"));
-        addToCart(name, price);
-    });
-});
-
-// Modal ouverture/fermeture
-cartButton.addEventListener("click", () => {
-    cartModal.style.display = "block";
-});
-
-checkoutButton.addEventListener("click", () => {
-    const total = cart.reduce((sum, item) => sum + item.price, 0); // Calculer le total du panier
-
-    // Alerte d'information sur les frais de livraison
-    if (total < 45) {
-        alert("La livraison est gratuite pour les commandes de 45€ et plus. Vos frais de livraison seront de " + deliveryFeeElement.textContent);
-    }
-
-    // Afficher le modal de commande
-    cartModal.style.display = "none";
-    checkoutModal.style.display = "block";
-});
-
-// Fermeture des modals
-closeModalButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        cartModal.style.display = "none";
-        checkoutModal.style.display = "none";
-    });
-});
-
-window.onclick = function(event) {
-    if (event.target == cartModal) {
-        cartModal.style.display = "none";
-    }
-    if (event.target == checkoutModal) {
-        checkoutModal.style.display = "none";
-    }
-}
-
-// Changement de sections
-document.querySelectorAll('.categoryButton').forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        document.querySelectorAll('.product-section').forEach(section => {
-            section.style.display = 'none';
-        });
-        document.getElementById(category).style.display = 'block';
-    });
-});
-
-// Par défaut, afficher la section Boissons
-document.getElementById('boissons').style.display = 'block';
-
-
-// Recherche de produits
-const produits = [
-    { 
-        nom: 'Smartphone XYZ', 
-        description: 'Un smartphone haut de gamme avec un écran de 6,5 pouces et un appareil photo de 108MP.', 
-        price: 500, 
-        image: 'https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/132791e2-5766-0ef2-ad80-e9bd8c096a51.jpeg' 
-    },
-    { 
-        nom: 'Laptop Pro 15', 
-        description: 'Un ordinateur portable puissant pour les professionnels, avec un processeur Intel i9 et 32GB RAM.', 
-        price: 1500, 
-        image: 'https://via.placeholder.com/150x150?text=Laptop+Pro+15' 
-    },
-    { 
-        nom: 'Casque Bluetooth HD', 
-        description: 'Un casque sans fil avec une autonomie de 30 heures et un son haute définition.', 
-        price: 150, 
-        image: 'https://via.placeholder.com/150x150?text=Casque+Bluetooth+HD' 
-    },
-    { 
-        nom: 'Montre Connectée X200', 
-        description: 'Une montre connectée avec suivi de la santé, GPS intégré et notification intelligente.', 
-        price: 200, 
-        image: 'https://via.placeholder.com/150x150?text=Montre+Connect%C3%A9e+X200' 
-    }
-];
-
-// Fonction pour rechercher et afficher les produits
-function searchProducts() {
-    let query = document.getElementById('search-bar').value.toLowerCase();
-    let resultsContainer = document.getElementById('search-results');
-    
-    // Vide les résultats précédents
-    resultsContainer.innerHTML = '';
-
-    // Recherche dans les produits
-    let filteredProducts = produits.filter(function(produit) {
-        return produit.nom.toLowerCase().includes(query);
-    });
-
-    // Affiche les produits correspondants
-    if (filteredProducts.length > 0) {
-        filteredProducts.forEach(function(produit) {
-            let produitElement = document.createElement('div');
-            produitElement.innerHTML = `
-                <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                    <img src="${produit.image}" alt="${produit.nom}" style="width: 150px; height: 150px; margin-right: 20px;">
-                    <div>
-                        <h3>${produit.nom}</h3>
-                        <p>${produit.description}</p>
-                        <p>${produit.price.toFixed(2)}€</p>
-                        <button onclick="addToCart('${produit.nom}', ${produit.price})">Ajouter au panier</button>
-                    </div>
-                </div>
-            `;
-            produitElement.style.borderBottom = '1px solid #ccc';
-            produitElement.style.padding = '10px 0';
-            resultsContainer.appendChild(produitElement);
-        });
-    } else {
-        resultsContainer.innerHTML = '<p>Aucun produit trouvé</p>';
-    }
-}
-
-
-
-
-
-
-function updateOpeningHours() {
-    const now = new Date();
-    const openHour = 20; // 20h
-    const closeHour = 5; // 5h (le lendemain)
-    const currentHour = now.getHours();
-    const messageElement = document.getElementById("openingHours");
-
-    // Vérifie si le magasin est ouvert
-    if (currentHour >= openHour || currentHour < closeHour) {
-        messageElement.className = "opening-hours open";
-        messageElement.innerHTML = "Ouvert aujourd'hui: 20h - 5h";
-    } else {
-        messageElement.className = "opening-hours closed";
-        messageElement.innerHTML = "Fermé";
-    }
-
-    // Vérifie si le magasin est bientôt fermé
-    if (currentHour === 4 || (currentHour === 5 && now.getMinutes() <= 30)) {
-        messageElement.innerHTML = "Le magasin ferme bientôt, n'attendez pas !"; // Nouveau message
-        messageElement.className = "opening-hours closed";
-    }
-}
-
-// Met à jour l'état d'ouverture dès que la page se charge
-window.onload = updateOpeningHours;
-</script>
-<script>
-
-
-
-
-
-// Fonction pour défiler jusqu'à la section de la catégorie
-function scrollToCategorySection(category) {
-    const section = document.getElementById(category);
-    
-    if (section) {
-        // Faire défiler jusqu'au début de la section entière (y compris le titre)
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-
-// Modification de la fonction de changement de section
-document.querySelectorAll('.categoryButton').forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        
-        // Masquer toutes les sections de produit
-        document.querySelectorAll('.product-section').forEach(section => {
-            section.style.display = 'none';
-        });
-
-        // Afficher la section de la catégorie sélectionnée
-        document.getElementById(category).style.display = 'block';
-
-        // Appeler la fonction pour faire défiler vers le début de la section
-        scrollToCategorySection(category);
-    });
-});
-</script>
 </body>
-
-</html>
+ </html>
